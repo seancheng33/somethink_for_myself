@@ -1,4 +1,8 @@
-'''抓取什么值得买网址的9块9的信息'''
+'''
+抓取什么值得买网址的9块9的信息
+使用phantomjs插件，然后将抓取的内容保存到一个csv文件中，这个只是一个雏形，未完善内容。
+后续有一个不用插件，直接用requests模块的版本。
+'''
 from selenium import webdriver
 import csv,time,sys,os
 
