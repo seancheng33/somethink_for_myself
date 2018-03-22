@@ -1,6 +1,7 @@
 '''
 获取漫画网站的某本整体漫画，
 修改思路为直接打开章节的页面，然后再打开页面，获取图片
+终于把功能写得比较完整了
 '''
 from time import sleep
 import os,requests
@@ -30,11 +31,12 @@ def get_chapterdetail(chapter_name,chapter_url):
     page_num = 1
 
     while True:
-        print(page_num,url)
+
         if page_num > 1:
-            new_url = 'http://www.tuku.cc'+chapter_url+'/p'+str(page_num)+'/'
+            new_url = 'http://www.tuku.cc'+chapter_url+'p'+str(page_num)+'/'
         else:
             new_url = 'http://www.tuku.cc'+chapter_url
+        print(page_num, new_url)
 
         if requests.get(new_url).status_code == 200:
             # 状态码如果为200，就是有正常的图片。不然就是图片没有了，可以退出
@@ -44,6 +46,13 @@ def get_chapterdetail(chapter_name,chapter_url):
             img_name = img_url.split('/')[-1]
 
             print(img_url,img_name)
+            #如果获取的地址为空，就是章节没有内容了，退出这个循环
+            if not len(img_url):
+                # 当len(img_url)等于0的时候，就是False，not False就是true，
+                # 可以理解为：img_url没有长度是执行
+                # 这个判断也可以写成len(img_url)==0
+                print('章节',chapter_name,'已经内容没有了')
+                break
 
             if not os.path.exists(chapter_name):
                 os.mkdir(chapter_name)
@@ -52,7 +61,6 @@ def get_chapterdetail(chapter_name,chapter_url):
                     imgf.write(requests.get(img_url).content)
             else:
                 print('图片加载失败，没有下载图片',img_name)
-
         else:
             print(chapter_name + '已经内容没有了，退出')
             break
@@ -62,8 +70,10 @@ def get_chapterdetail(chapter_name,chapter_url):
 
 
 if __name__ == '__main__':
-    url = 'http://www.tuku.cc/comic/28/'
+    # url = 'http://www.tuku.cc/comic/28/'
+    url = 'http://www.tuku.cc/comic/59839/'
     chapter_list = get_chapterlist(url)
+    print(chapter_list)
     for chapter in chapter_list:
         print(chapter_list[chapter])
         get_chapterdetail(chapter,chapter_list[chapter])
