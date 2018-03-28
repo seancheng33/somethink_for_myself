@@ -83,7 +83,7 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit(0)
-        # 按键事件
+        # 按键事件，or 后面的按键没反应，原因未知，待排查
         elif event.type == KEYDOWN:
             if (event.key == K_RIGHT or event.type == K_d) and playerPos[0] < MAPWIDTH - 1:
                 playerPos[0] += 1

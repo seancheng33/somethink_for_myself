@@ -4,7 +4,7 @@
 终于把功能写得比较完整了
 '''
 from time import sleep
-import os,requests
+import os,requests,random
 from bs4 import BeautifulSoup
 
 
@@ -65,7 +65,7 @@ def get_chapterdetail(chapter_name,chapter_url):
             print(chapter_name + '已经内容没有了，退出')
             break
 
-        sleep(5)  # 需要休眠时间
+        sleep( random.randint(3, 6))  # 需要休眠时间,随机休眠3到5秒，这样看起来就有点类似人类的浏览
         page_num = page_num+1
 
 
