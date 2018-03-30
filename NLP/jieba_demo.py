@@ -10,7 +10,7 @@ with open('sample/摸金校尉之九幽将军.txt', 'r', encoding='utf-8') as tx
     # 读取一本小说，用来做分析用
     text_data = txt_file.read().replace('\n','').strip()
 '''
-#不要一行一行的弄，还是这个文章弄了，再统计比较省事，这个一行行的这个，目前还没有想到适用的场景。
+#不要一行一行的弄，还是这个文章弄了，再统计比较省事，这个一行行的这个，目前还没有想到适用的场景。  
 # seg_list = []
 #
 # for data_line in text_data:
