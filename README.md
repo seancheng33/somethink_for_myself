@@ -11,3 +11,4 @@
 * 也有可以能传一些pygame的练习。
 * 可能要重温java，并上传一些java的代码
 * 添加GUI文件夹，增加内容：python的TKinter的GUI练习。
+* Data_Analysis文件夹，用于数据统计练习，基于python的练习
