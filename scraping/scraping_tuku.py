@@ -70,10 +70,12 @@ def get_chapterdetail(chapter_name,chapter_url):
 
 
 if __name__ == '__main__':
-    # url = 'http://www.tuku.cc/comic/28/'
-    url = 'http://www.tuku.cc/comic/59839/'
+    # url = 'http://www.tuku.cc/comic/28/' # 名侦探柯南
+    url = 'http://www.tuku.cc/comic/17532/' # 龙珠超
     chapter_list = get_chapterlist(url)
     print(chapter_list)
     for chapter in chapter_list:
+        # 遍历取出章节名、网址，依次打开页面，获取图片的网址，下载保留图片
         print(chapter_list[chapter])
         get_chapterdetail(chapter,chapter_list[chapter])
+
