@@ -5,10 +5,10 @@ import numpy as np
 # 计算user1和user2的皮尔逊相关系数
 def pearson_score(dataset, user1, user2):
     if user1 not in dataset:
-        raise TypeError('User' + user1 + ' not present in  the dataset')
+        raise TypeError('User' + user1 + ' not present in the dataset')
 
     if user2 not in dataset:
-        raise TypeError('User' + user2 + ' not present in  the dataset')
+        raise TypeError('User' + user2 + ' not present in the dataset')
 
     # 提取两个用户均评过分的电影
     rated_by_both = {}
