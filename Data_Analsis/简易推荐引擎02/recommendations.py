@@ -1,5 +1,7 @@
 '''
 @Author : sean cheng
+@Email  : aya234@163.com
+@Time   : 2018年4月17日
 利用MovieLens数据集，练习制作一个推荐引擎，利用皮尔逊相关系数计算出和其他用户的分数生产推荐列表
 数据文件中，用户名是字符串的1-943，电影是字符串的1-1682，8万条评分，评分等级是满分5分
 '''
@@ -40,7 +42,7 @@ def pearson_score(dataset, user_a, user_b):
 
     return sxy / np.sqrt(sxx * syy)
 
-
+# 根据用户，遍历全部的用户，计算皮尔逊相关系数，将符合条件的电影加入到推荐列表中。
 def generate_recommendations(dataset, user):
     if user not in dataset:
         raise TypeError('用户', user, '不在数据集中')
@@ -53,7 +55,7 @@ def generate_recommendations(dataset, user):
 
         if similarity_score <= 0.9:
             # 用户量大，有近千用户，如果取相似度大于0的，可能将全部的电影内容都推荐出来。这样的推荐就没有意义。
-            # 如果用户的相似度低于0.8的推荐不要，要找相似度高的用户的共同数据推荐才有意义
+            # 如果用户的相似度低于0.9的推荐不要，要找相似度高的用户的共同数据推荐才有意义
             continue
 
         for item in [x for x in dataset[u] if x not in dataset[user] or dataset[user][x] == 0]:
