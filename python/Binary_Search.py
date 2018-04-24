@@ -1,6 +1,7 @@
 '''
 @author: Sean Cheng
 算法练习：二分查找算法
+利用一个猜100以内的数字实现
 '''
 import random
 
