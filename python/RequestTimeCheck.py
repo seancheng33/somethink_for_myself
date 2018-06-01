@@ -50,15 +50,17 @@ def check_web(name, target_url):
         'ST_IAP_FlagCookie': 'Tyq!%24%24+0v%3d280s%40%40%3c%3a6DTMbaeiibafMs2%3aB%3a%3f849F%3fM00%24%25%7d+ry%7cu%5d%22t00Mb%60ah_e_caPafjdejah'
     }
 
-    cookie4 = {
-
+    cookie4 = {  # 账务稽核平台的cookies
+            'ASP.NET_SessionId': 'd3w34ca5jfs1wqezniqa2mwj'
     }
 
     if name == '促销工具箱':
         # 促销工具箱需要用另外的cookies登陆
         webpage = requests.get(url=target_url, cookies=cookie2)
+        # print(webpage.text)  # 打印页面源码，了解访问的页面情况
     elif name == '生产中心':
         webpage = requests.get(url=target_url, cookies=cookie3)
+        # print(webpage.text)  # 打印页面源码，了解访问的页面情况
     elif name == '4G业务手续支撑平台':
         # 只能用ie登陆，使用完整包含cookies的headers
         headers = {
@@ -73,10 +75,13 @@ def check_web(name, target_url):
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko'
         }
         webpage = requests.get(url=target_url, headers=headers)
-    elif name == '生产中心':
+        # print(webpage.text)  # 打印页面源码，了解访问的页面情况
+    elif name == '账务稽核平台':
         webpage = requests.get(url=target_url, cookies=cookie4)
+        # print(webpage.text)  # 打印页面源码，了解访问的页面情况
     else:
         webpage = requests.get(url=target_url, cookies=cookie1)
+        # print(webpage.text)  # 打印页面源码，了解访问的页面情况
 
     # 如果返回的是200的状态码，才后续执行。
     if webpage.status_code == 200:
@@ -100,12 +105,12 @@ if __name__ == '__main__':
         '服务订单系统': 'http://dmms.st.gmcc.net',
         '投资一体化项目': 'http://iimis.st.gmcc.net/Modules/MyWork/MyToDo.html?r=0.621052226183886',
         '品高工作流': 'http://newwf.st.gmcc.net/Modules/Workflow/ToDoListNavigation.aspx',
-        '4G业务手续支撑平台': 'http://ngid2.st.gmcc.net/Modules/MyWorkBench/MyTodos.aspx?ResId=aa7cb440-c61d-4f99-9147-8a9571d066a1',
+        '4G业务手续支撑平台': 'http://ngid2.st.gmcc.net/Modules/MyWorkBench/MyTodos.aspx', #
         '统一支撑平台': 'http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html',
         '生产中心': 'http://sczx.st.gmcc.net/stms/system/index.action',
         '全业务支撑平台': 'http://stwed.st.gmcc.net/stdwdb',
         '营业厅资源管理平台': 'http://zy.st.gmcc.net/iFrameWork/Test/Default.htm',
-        '账务稽核平台': 'http://audit.st.gmcc.net',  #
+        '账务稽核平台': 'http://audit.st.gmcc.net/Index.aspx',
         '移动渠道信息化系统': 'http://qd.st.gmcc.net/Web/default.aspx',
         '促销工具箱': 'http://cuxiao.st.gmcc.net/c/DefaultIndex.aspx'
     }
