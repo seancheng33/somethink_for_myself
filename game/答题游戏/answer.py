@@ -5,20 +5,35 @@
 @Program      : pygame练习，做一个答题的程序，有游戏的标题界面
                 使用数字键1-4作答，在答题界面按回退键可以返回标题界面。
                 按enter键进入下一题。有一个计时器，每题的答题都会倒计时。
+                题库使用xml文件的形式
 '''
 import sys
+
 import pygame
 from pygame.locals import *
+from xml.dom.minidom import parse
 
 
 def game_title():
-    start_text = '请按 空格 键开始游戏'
+    title_text = '答题游戏标题'
+    start_text = '开始游戏'
+    about_text = '基于python3.6.4和pygame制作。'
+    title_bg = pygame.image.load('img/bg.jpg')
+    SUBFACE.blit(title_bg, (0, 0))
+    # SUBFACE.fill(color_dict['black'])
+    title_image = titleFont.render(title_text, True, color_dict['white'])
+    # tips_image = globalFont.render(start_text, True, color_dict['orange'])
 
-    title_image = titleFont.render('Title Game Name', True, color_dict['green'])
-    tips_image = globalFont.render(start_text, True, color_dict['orange'])
-    SUBFACE.blit(title_image, (50, 50))
-    SUBFACE.blit(tips_image, (300, 400))
+    help_image = helpFont.render(about_text, True, color_dict['white'])
+
     while True:
+        tips_image = globalFont.render(start_text, True, color_dict['orange'])
+        tips_rect = tips_image.get_rect()
+
+        SUBFACE.blit(title_image, (230, 150))
+        SUBFACE.blit(tips_image, (285, 400))
+        SUBFACE.blit(help_image, (240, 500))
+
         for event in pygame.event.get():
             # 关闭按钮的事件
             if event.type == QUIT:
@@ -33,16 +48,27 @@ def game_title():
                     # 按下开始键开始游戏
                     load_game(0)
                     return
+            elif event.type == MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
+                if 285 < x < 285 + tips_rect.right and 400 < y < 400 + tips_rect.bottom:
+                    load_game(0)
+                return
+
+        x, y = pygame.mouse.get_pos()
+
+        if 285 < x < 285 + tips_rect.right and 400 < y < 400 + tips_rect.bottom:
+            tips_image = globalFont.render(start_text, True, color_dict['red'])
+            SUBFACE.blit(tips_image, (285, 400))
 
         pygame.display.update()
-        pygame.time.Clock().tick()
+        pygame.time.Clock().tick(30)
 
 
-def load_game(leves):
+def load_game(levels):
     SUBFACE.fill(color_dict['black'])
-    level = game_level[leves]
+    level = game_level[levels]
     level_question = level['question']
-    level_answer = level['answer']
+    level_answer = level['answers']
     level_correct = int(level['correct'])
 
     # 显示出问题
@@ -87,7 +113,7 @@ def load_game(leves):
 
 
         pygame.display.update()
-        pygame.time.Clock().tick()
+        pygame.time.Clock().tick(30)
 
 
 def input_handle(number, correct):
@@ -98,8 +124,33 @@ def input_handle(number, correct):
     return SUBFACE.blit(text, (50, 550))
 
 
+def load_file(filename):
+    question_data = parse(filename)
+    # 得到根节点
+    root = question_data.documentElement
+
+    game_level = []
+    questions = root.getElementsByTagName("question")
+    # print(questions)
+    for item in questions:
+        list ={}
+        question = item.getAttribute("title")
+        answer_items = item.getElementsByTagName("answer")  # 返回一个列表
+        answers = []
+        answers.append(answer_items[0].getElementsByTagName("a")[0].childNodes[0].data)
+        answers.append(answer_items[0].getElementsByTagName("b")[0].childNodes[0].data)
+        answers.append(answer_items[0].getElementsByTagName("c")[0].childNodes[0].data)
+        answers.append(answer_items[0].getElementsByTagName("d")[0].childNodes[0].data)
+        correct = item.getElementsByTagName("correct")[0].childNodes[0].data
+        list['question'] = question
+        list['answers'] = answers
+        list['correct'] = correct
+        game_level.append(list)
+
+    return game_level
+
 def main():
-    global SUBFACE, titleFont, globalFont, color_dict, game_level
+    global SUBFACE, titleFont, globalFont, helpFont, color_dict, game_level
     color_dict = {'red': (255, 0, 0),  # 纯红
                   'blue': (255, 0, 0),  # 纯蓝
                   'green': (0, 125, 0),  # 纯绿
@@ -110,24 +161,19 @@ def main():
                   'white': (255, 255, 255),  # 纯白
                   }
 
-    game_level = [
-        {'question': '以下哪一个是Python合法的标识符？', 'answer': ['_name', '1name', 'stu-name', 'stu.name'], 'correct': 1},
-        {'question': '以下不能作为字典的key的是哪一个选项？', 'answer': ['2016', '\'china\'', 'listA=[\'Name\']', 'tupleA=(123)'], 'correct': 3},
-        {'question': '问题03，', 'answer': ['答案A', '答案B', '答案C', '答案D'], 'correct': 1},
-        {'question': '问题04，', 'answer': ['答案E', '答案F', '答案G', '答案H'], 'correct': 4}
-    ]
+    game_level = load_file("data.xml")
 
     #
     pygame.init()
     SUBFACE = pygame.display.set_mode((800, 600))
     pygame.display.set_caption('答题游戏 version 1.0 Demo')
 
-    titleFont = pygame.font.SysFont('SimHei', 60)
-    globalFont = pygame.font.SysFont('SimHei', 36)
+    titleFont = pygame.font.Font('font/YaHei.ttf', 60)
+    globalFont = pygame.font.Font('font/YaHei.ttf', 36)
+    helpFont = pygame.font.Font('font/YaHei.ttf', 24)
     game_title()
     corrent = 0
     while True:
-
         result = load_game(corrent)
 
         if result == 'reset':
@@ -141,7 +187,7 @@ def main():
             load_game(corrent)
 
         pygame.display.update()
-        pygame.time.Clock().tick()
+        pygame.time.Clock().tick(30)
 
 
 if __name__ == '__main__':

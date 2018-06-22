@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<collection>
+    <question title="以下哪一个是Python合法的标识符？" >
+        <answer>
+            <a>_name</a>
+            <b>1name</b>
+            <c>stu-name</c>
+            <d>stu.name</d>
+        </answer>
+        <correct>1</correct>
+    </question>
+    <question title="以下不能作为字典的key的是哪一个选项？" >
+        <answer>
+            <a>2016</a>
+            <b>'china'</b>
+            <c>listA=['Name']</c>
+            <d>tupleA=(123)</d>
+        </answer>
+        <correct>3</correct>
+    </question>
+</collection>
