@@ -1,0 +1,405 @@
+[INFO  - 2018-06-07T02:49:06.491Z] GhostDriver - Main - running on port 57274
+[INFO  - 2018-06-07T02:49:09.730Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36","webSecurityEnabled":true}
+[INFO  - 2018-06-07T02:49:09.731Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.customHeaders:  - {}
+[INFO  - 2018-06-07T02:49:09.731Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"},"phantomjs.page.settings.resourceTimeout":100,"phantomjs.page.settings.userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"}
+[INFO  - 2018-06-07T02:49:09.731Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 5a49f9c0-69fd-11e8-947f-45c548865a78
+[ERROR - 2018-06-07T02:49:09.993Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:49:09.993Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:49:25.351Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:49:25.351Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:49:34.905Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:49:34.905Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:49:39.860Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:49:39.861Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:49:53.903Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:49:53.903Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:08.409Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:08.409Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:26.340Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:26.340Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:32.872Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:32.872Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:38.236Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:38.236Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:39.923Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: attachEvent
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:39.923Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://dmms.st.gmcc.net/include/common.js:332)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:43.750Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:43.750Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:49.516Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:50:49.517Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:15.175Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:15.175Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:16.653Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:16.653Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:16.826Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:16.826Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:17.048Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:17.049Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:17.262Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:17.262Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:17.443Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:17.443Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:17.661Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:17.661Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:17.850Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:17.851Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:18.043Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:18.043Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:18.262Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:18.262Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:18.479Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:18.479Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:18.692Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:18.692Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:18.844Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:18.844Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.065Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.065Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.218Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.218Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.430Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.431Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.580Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.580Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.795Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.795Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.980Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:19.980Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:20.160Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:20.160Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:20.376Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: TypeError: null is not an object (evaluating 'userInfo.UserID')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:20.376Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  GetToDoSeting (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:263)
+  (anonymous function) (http://ss.st.gmcc.net/Sys/SystemFunction/FixedBlock.html:271)
+  fire (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1075)
+  fireWith (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:1193)
+  ready (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:435)
+  DOMContentLoaded (http://ss.st.gmcc.net/Scripts/jquery-1.7.2.js:949)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:24.166Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:24.166Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:32.583Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: Sys.Net.WebServiceFailedException: Sys.Net.WebServiceFailedException: The server method 'CurrentUserExists' failed with the following error: 
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:32.583Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  onComplete (http://stwed.st.gmcc.net/STDWDB/ScriptResource.axd?d=JaQYXnbCW9NeAGVJZ2qsadpNE3Fx4DzTK-tJ7jMOrefwQ1GHrXPWzOeHhZYqfc17HCp2Pp4a1o7rk6wZZy2eGurSGlaanixkCfag1ev6f795Qj12oNjg70rR09uRGTudnnlj9X6WSCmFUDVM-IqOGcBXbYGJdcXv03khOZmcwV99taT60&t=ffffffffaf0b2df4:6953)
+  (anonymous function) (http://stwed.st.gmcc.net/STDWDB/ScriptResource.axd?d=JaQYXnbCW9NeAGVJZ2qsadpNE3Fx4DzTK-tJ7jMOrefwQ1GHrXPWzOeHhZYqfc17HCp2Pp4a1o7rk6wZZy2eGurSGlaanixkCfag1ev6f795Qj12oNjg70rR09uRGTudnnlj9X6WSCmFUDVM-IqOGcBXbYGJdcXv03khOZmcwV99taT60&t=ffffffffaf0b2df4:3484)
+  Sys$Net$WebRequest$completed (http://stwed.st.gmcc.net/STDWDB/ScriptResource.axd?d=JaQYXnbCW9NeAGVJZ2qsadpNE3Fx4DzTK-tJ7jMOrefwQ1GHrXPWzOeHhZYqfc17HCp2Pp4a1o7rk6wZZy2eGurSGlaanixkCfag1ev6f795Qj12oNjg70rR09uRGTudnnlj9X6WSCmFUDVM-IqOGcBXbYGJdcXv03khOZmcwV99taT60&t=ffffffffaf0b2df4:6366)
+  _onReadyStateChange (http://stwed.st.gmcc.net/STDWDB/ScriptResource.axd?d=JaQYXnbCW9NeAGVJZ2qsadpNE3Fx4DzTK-tJ7jMOrefwQ1GHrXPWzOeHhZYqfc17HCp2Pp4a1o7rk6wZZy2eGurSGlaanixkCfag1ev6f795Qj12oNjg70rR09uRGTudnnlj9X6WSCmFUDVM-IqOGcBXbYGJdcXv03khOZmcwV99taT60&t=ffffffffaf0b2df4:5986)
+  openUrl (:0)
+  open (phantomjs://platform/webpage.js:281)
+  (anonymous function) (phantomjs://code/session_request_handler.js:495)
+  _execFuncAndWaitForLoadDecorator (phantomjs://code/session.js:212)
+  _postUrlCommand (phantomjs://code/session_request_handler.js:494)
+  _handle (phantomjs://code/session_request_handler.js:91)
+  _reroute (phantomjs://code/request_handler.js:61)
+  _handle (phantomjs://code/router_request_handler.js:78)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:32.680Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:32.680Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:42.634Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:42.635Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  load (http://audit.st.gmcc.net/Nav.aspx:12)
+  onload (http://audit.st.gmcc.net/Nav.aspx:22)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:42.641Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:42.641Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  isAuth (http://audit.st.gmcc.net/js/mune.js:4)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:43.108Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:43.109Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  isAuth (http://audit.st.gmcc.net/js/mune.js:4)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:43.113Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:43.113Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  load (http://audit.st.gmcc.net/Nav.aspx:12)
+  onload (http://audit.st.gmcc.net/Nav.aspx:22)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:46.775Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - msg: ReferenceError: Can't find variable: ActiveXObject
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-06-07T02:51:46.775Z] Session [5a49f9c0-69fd-11e8-947f-45c548865a78] - page.onError - stack:
+  global code (http://iams.st.gmcc.net/login.aspx?systemID=__STMOBILE-SER__&userRequest=http%3a%2f%2fserms.st.gmcc.net%2flogistics%2fDefault.aspx:10)
+
+  phantomjs://platform/console++.js:263 in error
