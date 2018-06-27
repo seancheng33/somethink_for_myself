@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <collection>
-    <question title="以下哪一个是Python合法的标识符？" >
+    <question title="以下哪一个是Python合法的标识符？">
         <answer>
             <a>_name</a>
             <b>1name</b>
@@ -9,12 +9,30 @@
         </answer>
         <correct>1</correct>
     </question>
-    <question title="以下不能作为字典的key的是哪一个选项？" >
+    <question title="以下不能作为字典的key的是哪一个选项？">
         <answer>
             <a>2016</a>
             <b>'china'</b>
             <c>listA=['Name']</c>
             <d>tupleA=(123)</d>
+        </answer>
+        <correct>3</correct>
+    </question>
+    <question title="以下关于Python的赋值说法中错误的是哪一项？">
+        <answer>
+            <a>Python 中的变量在使用前必须赋值，变量赋值后该变量才会被创建。</a>
+            <b>Python 支持多元赋值和多重赋值</b>
+            <c>Python 赋值时大小写敏感</c>
+            <d>Python中要首先声明变量的类型后才能给该变量赋值。</d>
+        </answer>
+        <correct>4</correct>
+    </question>
+    <question title="如果需要在文本文件test.txt的中间部分添加一行字符串，以下open语句的mode位置应该选择以下哪一项？">
+        <answer>
+            <a>a</a>
+            <b>r+</b>
+            <c>w+</c>
+            <d>a+</d>
         </answer>
         <correct>3</correct>
     </question>

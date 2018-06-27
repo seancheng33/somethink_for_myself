@@ -15,23 +15,37 @@ from xml.dom.minidom import parse
 
 
 def game_title():
-    title_text = '答题游戏标题'
+    title_text = '大脑 很囧'
     start_text = '开始游戏'
     about_text = '基于python3.6.4和pygame制作。'
     title_bg = pygame.image.load('img/bg.jpg')
     SUBFACE.blit(title_bg, (0, 0))
     # SUBFACE.fill(color_dict['black'])
-    title_image = titleFont.render(title_text, True, color_dict['white'])
     # tips_image = globalFont.render(start_text, True, color_dict['orange'])
 
     help_image = helpFont.render(about_text, True, color_dict['white'])
-
+    title_time = 0
     while True:
+        if title_time == 0:
+            title_image = titleFont.render(title_text, True, color_dict['white'])
+            title_time = 1
+        elif title_time == 1:
+            title_image = titleFont.render(title_text, True, color_dict['green'])
+            title_time = 2
+        elif title_time == 2:
+            title_image = titleFont.render(title_text, True, color_dict['lime'])
+            title_time = 0
+        title_rect = title_image.get_rect()
+        title_rect.centerx = 400
+        title_rect.top = 130
+
         tips_image = globalFont.render(start_text, True, color_dict['orange'])
         tips_rect = tips_image.get_rect()
+        tips_rect.centerx = 400
+        tips_rect.top = 400
 
-        SUBFACE.blit(title_image, (230, 150))
-        SUBFACE.blit(tips_image, (285, 400))
+        SUBFACE.blit(title_image, title_rect)
+        SUBFACE.blit(tips_image, tips_rect)
         SUBFACE.blit(help_image, (240, 500))
 
         for event in pygame.event.get():
@@ -50,18 +64,18 @@ def game_title():
                     return
 
         x, y = pygame.mouse.get_pos()
-
-        if 285 < x < 285 + tips_rect.right and 400 < y < 400 + tips_rect.bottom:
+        # 开始按键的鼠标事件，包括了鼠标经过事件和点击事件
+        if tips_rect.left < x < tips_rect.right and tips_rect.top < y < tips_rect.bottom:
             tips_image = globalFont.render(start_text, True, color_dict['red'])
-            SUBFACE.blit(tips_image, (285, 400))
-            pressed_array = pygame.mouse.get_pressed()
+            SUBFACE.blit(tips_image, tips_rect)
+            pressed_array = pygame.mouse.get_pressed()  # 获取鼠标事件的列表
             for event in pressed_array:
-                if event == 1 : # 1为鼠标左键点击事件
+                if event == 1:  # 1为鼠标左键点击事件
                     load_game(0)
                     return
 
         pygame.display.update()
-        pygame.time.Clock().tick(30)
+        pygame.time.Clock().tick(60)
 
 
 def load_game(levels):
@@ -72,20 +86,19 @@ def load_game(levels):
     level_correct = int(level['correct'])
 
     # 显示出问题
-    question_image = globalFont.render(level_question, True, color_dict['green'])
+    question_image = helpFont.render(level_question, True, color_dict['green'])
     SUBFACE.blit(question_image, (50, 150))
-    # 显示出答案
-
-    item1_image = globalFont.render('1 - '+level_answer[0], True, color_dict['gold'])
-    SUBFACE.blit(item1_image, (50, 250))
-    item2_image = globalFont.render('2 - '+level_answer[1], True, color_dict['gold'])
-    SUBFACE.blit(item2_image, (50, 300))
-    item3_image = globalFont.render('3 - '+level_answer[2], True, color_dict['gold'])
-    SUBFACE.blit(item3_image, (50, 350))
-    item4_image = globalFont.render('4 - '+level_answer[3], True, color_dict['gold'])
-    SUBFACE.blit(item4_image, (50, 400))
 
     while True:
+        # 显示出答案
+        item1_image = helpFont.render('1 - ' + level_answer[0], True, color_dict['gold'])
+        item2_image = helpFont.render('2 - ' + level_answer[1], True, color_dict['gold'])
+        item3_image = helpFont.render('3 - ' + level_answer[2], True, color_dict['gold'])
+        item4_image = helpFont.render('4 - ' + level_answer[3], True, color_dict['gold'])
+        SUBFACE.blit(item1_image, (50, 250))
+        SUBFACE.blit(item2_image, (50, 300))
+        SUBFACE.blit(item3_image, (50, 350))
+        SUBFACE.blit(item4_image, (50, 400))
 
         for event in pygame.event.get():
             # 关闭按钮的事件
@@ -121,6 +134,7 @@ def input_handle(number, correct):
         text = globalFont.render('答案正确', True, color_dict['green'])
     else:
         text = globalFont.render('答案错误', True, color_dict['red'])
+
     return SUBFACE.blit(text, (50, 550))
 
 
