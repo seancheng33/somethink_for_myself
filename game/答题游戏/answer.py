@@ -48,17 +48,17 @@ def game_title():
                     # 按下开始键开始游戏
                     load_game(0)
                     return
-            elif event.type == MOUSEBUTTONDOWN:
-                x, y = pygame.mouse.get_pos()
-                if 285 < x < 285 + tips_rect.right and 400 < y < 400 + tips_rect.bottom:
-                    load_game(0)
-                return
 
         x, y = pygame.mouse.get_pos()
 
         if 285 < x < 285 + tips_rect.right and 400 < y < 400 + tips_rect.bottom:
             tips_image = globalFont.render(start_text, True, color_dict['red'])
             SUBFACE.blit(tips_image, (285, 400))
+            pressed_array = pygame.mouse.get_pressed()
+            for event in pressed_array:
+                if event == 1 : # 1为鼠标左键点击事件
+                    load_game(0)
+                    return
 
         pygame.display.update()
         pygame.time.Clock().tick(30)
@@ -185,6 +185,8 @@ def main():
             else:
                 corrent += 1
             load_game(corrent)
+        elif result == '':
+            pass
 
         pygame.display.update()
         pygame.time.Clock().tick(30)
