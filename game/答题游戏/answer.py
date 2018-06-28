@@ -56,13 +56,11 @@ def game_title():
         for event in pygame.event.get():
             # 关闭按钮的事件
             if event.type == QUIT:
-                pygame.quit()
-                sys.exit(0)
-            elif event.type == KEYUP:
+                close_event()
+            elif event.type == KEYDOWN:
                 # 按键按下后抬起的事件判断
                 if event.key == K_ESCAPE:
-                    pygame.quit()
-                    sys.exit(0)
+                    close_event()
 
         x, y = pygame.mouse.get_pos()
         # 开始按键的鼠标事件，包括了鼠标经过事件和点击事件
@@ -94,13 +92,17 @@ def load_game(levels):
 
     tips_text = ['用鼠标选择答案','']
     score = 0
-
+    right_score = 0
+    wrong_score = 0
 
     # 右侧的各种选项的显示，包括说明，分数，当前第几题。
 
-    # 显示出问题
-    question_image = questionFont.render(level_question, True, color_dict['black'])
-    SUBFACE.blit(question_image, (50, 100))
+    # 显示出问题,按照宽度是28个字符串的规格显示出来。
+    for i in range(int(len(level_question) / 28 + 1)):
+        start = i * 28
+        end = (i + 1) * 28
+        question_image = questionFont.render(level_question[start:end], True, color_dict['black'])
+        SUBFACE.blit(question_image, (50, 80+(i*30)))
 
     while True:
         # 右侧的内容
@@ -108,24 +110,25 @@ def load_game(levels):
         SUBFACE.blit(level_image, (725, 80))
         score_image = helpFont.render('当前分数：'+str(score), True, color_dict['orange'])
         SUBFACE.blit(score_image, (725, 120))
-        score_image = helpFont.render('正确题数：'+str(score), True, color_dict['orange'])
+        score_image = helpFont.render('正确题数：'+str(right_score), True, color_dict['orange'])
         SUBFACE.blit(score_image, (725, 160))
-        score_image = helpFont.render('错误题数：'+str(score), True, color_dict['orange'])
+        score_image = helpFont.render('错误题数：'+str(wrong_score), True, color_dict['orange'])
         SUBFACE.blit(score_image, (725, 200))
+
         # 显示出答案选项
-        item1_image = answerFont.render('1 - ' + level_answer[0], True, color_dict['gold'])
+        item1_image = answerFont.render('1 - ' + level_answer[0], True, color_dict['red'])
         item1_rect = item1_image.get_rect()
         item1_rect.left = 50
         item1_rect.top = 280
-        item2_image = answerFont.render('2 - ' + level_answer[1], True, color_dict['gold'])
+        item2_image = answerFont.render('2 - ' + level_answer[1], True, color_dict['red'])
         item2_rect = item2_image.get_rect()
         item2_rect.left = 50
         item2_rect.top = 350
-        item3_image = answerFont.render('3 - ' + level_answer[2], True, color_dict['gold'])
+        item3_image = answerFont.render('3 - ' + level_answer[2], True, color_dict['red'])
         item3_rect = item3_image.get_rect()
         item3_rect.left = 50
         item3_rect.top = 420
-        item4_image = answerFont.render('4 - ' + level_answer[3], True, color_dict['gold'])
+        item4_image = answerFont.render('4 - ' + level_answer[3], True, color_dict['red'])
         item4_rect = item4_image.get_rect()
         item4_rect.left = 50
         item4_rect.top = 490
@@ -138,38 +141,58 @@ def load_game(levels):
         for event in pygame.event.get():
             # 关闭按钮的事件
             if event.type == QUIT:
-                pygame.quit()
-                sys.exit(0)
-            elif event.type == KEYUP:
+                close_event()
+            elif event.type == KEYDOWN:
                 # 按键按下后抬起的事件判断
                 if event.key == K_ESCAPE:
-                    pygame.quit()
-                    sys.exit(0)
+                    close_event()
                 elif event.key == K_BACKSPACE:
                     # 按回退键，返回到标题界面。
                     return 'reset'
                 elif event.key == K_RETURN:
-
+                    # 按回车键，跳到下一题。
                     return 'next'
 
         # 鼠标控制事件
         x, y = pygame.mouse.get_pos()
-
+        # 四个答案区域的内容的鼠标鼠标时间控制
         if item1_rect.left < x < item1_rect.right and item1_rect.top < y < item1_rect.bottom:
-            item1_image = answerFont.render('1 - ' + level_answer[0], True, color_dict['white'])
+            item1_image = answerFont.render('1 - ' + level_answer[0], True, color_dict['gold'])
             SUBFACE.blit(item1_image, item1_rect)
+            pressed = pygame.mouse.get_pressed()
+            for event in pressed:
+                if event == 1:
+                    return 'next'
         if item2_rect.left < x < item2_rect.right and item2_rect.top < y < item2_rect.bottom:
-            item2_image = answerFont.render('2 - ' + level_answer[1], True, color_dict['white'])
+            item2_image = answerFont.render('2 - ' + level_answer[1], True, color_dict['gold'])
             SUBFACE.blit(item2_image, item2_rect)
+            pressed = pygame.mouse.get_pressed()
+            for event in pressed:
+                if event == 1:
+                    return 'next'
         if item3_rect.left < x < item3_rect.right and item3_rect.top < y < item3_rect.bottom:
-            item3_image = answerFont.render('3 - ' + level_answer[2], True, color_dict['white'])
+            item3_image = answerFont.render('3 - ' + level_answer[2], True, color_dict['gold'])
             SUBFACE.blit(item3_image, item3_rect)
+            pressed = pygame.mouse.get_pressed()
+            for event in pressed:
+                if event == 1:
+                    return 'next'
         if item4_rect.left < x < item4_rect.right and item4_rect.top < y < item4_rect.bottom:
-            item4_image = answerFont.render('4 - ' + level_answer[3], True, color_dict['white'])
+            item4_image = answerFont.render('4 - ' + level_answer[3], True, color_dict['gold'])
             SUBFACE.blit(item4_image, item4_rect)
+            pressed = pygame.mouse.get_pressed()
+            for event in pressed:
+                if event == 1:
+                    return 'next'
+        # 右侧按键的鼠标事件
 
         pygame.display.update()
         pygame.time.Clock().tick(60)
+
+
+def close_event():
+    pygame.quit()
+    sys.exit(0)
 
 
 def load_file(filename):
@@ -179,21 +202,21 @@ def load_file(filename):
 
     game_level = []
     questions = root.getElementsByTagName("question")
-    # print(questions)
+
     for item in questions:
-        list = {}
+        q_list = {}
         question = item.getAttribute("title")
         answer_items = item.getElementsByTagName("answer")  # 返回一个列表
-        answers = []
-        answers.append(answer_items[0].getElementsByTagName("a")[0].childNodes[0].data)
-        answers.append(answer_items[0].getElementsByTagName("b")[0].childNodes[0].data)
-        answers.append(answer_items[0].getElementsByTagName("c")[0].childNodes[0].data)
-        answers.append(answer_items[0].getElementsByTagName("d")[0].childNodes[0].data)
+        answerList = []
+        answerList.append(answer_items[0].getElementsByTagName("a")[0].childNodes[0].data)
+        answerList.append(answer_items[0].getElementsByTagName("b")[0].childNodes[0].data)
+        answerList.append(answer_items[0].getElementsByTagName("c")[0].childNodes[0].data)
+        answerList.append(answer_items[0].getElementsByTagName("d")[0].childNodes[0].data)
         correct = item.getElementsByTagName("correct")[0].childNodes[0].data
-        list['question'] = question
-        list['answers'] = answers
-        list['correct'] = correct
-        game_level.append(list)
+        q_list['question'] = question
+        q_list['answers'] = answerList
+        q_list['correct'] = correct
+        game_level.append(q_list)
 
     return game_level
 
@@ -218,7 +241,7 @@ def main():
     # 初始化
     pygame.init()
     SUBFACE = pygame.display.set_mode((1024, 640))
-    pygame.display.set_caption('答题游戏 version 1.0 Demo')
+    pygame.display.set_caption('大脑很囧--答题类游戏 Version 1.0.0')
 
     titleFont = pygame.font.Font('font/YaHei.ttf', 150)
     globalFont = pygame.font.Font('font/YaHei.ttf', 36)
