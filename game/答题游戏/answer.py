@@ -6,6 +6,9 @@
                 使用数字键1-4作答，在答题界面按回退键可以返回标题界面。
                 按enter键进入下一题。有一个计时器，每题的答题都会倒计时。
                 题库使用xml文件的形式
+                后续优化思路：1、使用shelve做题库的数据存储和读取。
+                            2、多题，随机取出一定数量的题目，进行游戏
+                            3、本脚本项目化，形成比较正规的项目结构
 '''
 import sys
 
@@ -18,7 +21,7 @@ def game_title():
     title_text = '大脑 很囧'
     start_text = '开始游戏'
     about_text = '基于python3.6.4和pygame制作。'
-    title_bg = pygame.image.load('img/bg.jpg')
+    title_bg = pygame.image.load('img/05.jpg')
     SUBFACE.blit(title_bg, (0, 0))
     # SUBFACE.fill(color_dict['black'])
     # tips_image = globalFont.render(start_text, True, color_dict['orange'])
@@ -80,25 +83,42 @@ def game_title():
 
 def load_game(levels):
     SUBFACE.fill(color_dict['black'])
+    title_bg = pygame.image.load('img/03.jpg')
+    SUBFACE.blit(title_bg, (0, 0))
     level = game_level[levels]
     level_question = level['question']
     level_answer = level['answers']
     level_correct = int(level['correct'])
 
+    # 背景框
+    q_rect = pygame.Rect(40, 80, 650, 180)
+    a_rect = pygame.Rect(40, 280, 650, 300)
+    h_rect = pygame.Rect(730, 80, 250, 500)
+
+    q_rect
+
+    # pygame.draw.rect(SUBFACE, color_dict['white'], (40, 80, 650, 180))  # 问题区域
+    # pygame.draw.rect(SUBFACE, color_dict['white'], (40, 280, 650, 300))  # 答案区域
+    # pygame.draw.rect(SUBFACE, color_dict['white'], (730, 80, 250, 500))  # 其他帮助、提示区域
+
+    # 右侧的各种选项的显示，包括说明，分数，当前第几题。
+    
+
+
     # 显示出问题
-    question_image = helpFont.render(level_question, True, color_dict['green'])
+    question_image = questionFont.render(level_question, True, color_dict['green'])
     SUBFACE.blit(question_image, (50, 150))
 
     while True:
         # 显示出答案
-        item1_image = helpFont.render('1 - ' + level_answer[0], True, color_dict['gold'])
-        item2_image = helpFont.render('2 - ' + level_answer[1], True, color_dict['gold'])
-        item3_image = helpFont.render('3 - ' + level_answer[2], True, color_dict['gold'])
-        item4_image = helpFont.render('4 - ' + level_answer[3], True, color_dict['gold'])
-        SUBFACE.blit(item1_image, (50, 250))
-        SUBFACE.blit(item2_image, (50, 300))
-        SUBFACE.blit(item3_image, (50, 350))
-        SUBFACE.blit(item4_image, (50, 400))
+        item1_image = answerFont.render('1 - ' + level_answer[0], True, color_dict['gold'])
+        item2_image = answerFont.render('2 - ' + level_answer[1], True, color_dict['gold'])
+        item3_image = answerFont.render('3 - ' + level_answer[2], True, color_dict['gold'])
+        item4_image = answerFont.render('4 - ' + level_answer[3], True, color_dict['gold'])
+        SUBFACE.blit(item1_image, (50, 280))
+        SUBFACE.blit(item2_image, (50, 330))
+        SUBFACE.blit(item3_image, (50, 380))
+        SUBFACE.blit(item4_image, (50, 430))
 
         for event in pygame.event.get():
             # 关闭按钮的事件
@@ -110,19 +130,15 @@ def load_game(levels):
                 if event.key == K_ESCAPE:
                     pygame.quit()
                     sys.exit(0)
-                elif event.key == K_1:
-                    answer_text = input_handle(1, level_correct)
-                elif event.key == K_2:
-                    answer_text = input_handle(2, level_correct)
-                elif event.key == K_3:
-                    answer_text = input_handle(3, level_correct)
-                elif event.key == K_4:
-                    answer_text = input_handle(4, level_correct)
                 elif event.key == K_BACKSPACE:
                     # 按回退键，返回到标题界面。
                     return 'reset'
                 elif event.key == K_RETURN:
+
                     return 'next'
+
+            # 鼠标控制事件
+            x,y = pygame.mouse.get_pos()
 
 
         pygame.display.update()
@@ -147,7 +163,7 @@ def load_file(filename):
     questions = root.getElementsByTagName("question")
     # print(questions)
     for item in questions:
-        list ={}
+        list = {}
         question = item.getAttribute("title")
         answer_items = item.getElementsByTagName("answer")  # 返回一个列表
         answers = []
@@ -163,8 +179,9 @@ def load_file(filename):
 
     return game_level
 
+
 def main():
-    global SUBFACE, titleFont, globalFont, helpFont, color_dict, game_level
+    global SUBFACE, titleFont, globalFont, helpFont, color_dict, game_level,questionFont,answerFont
     color_dict = {'red': (255, 0, 0),  # 纯红
                   'blue': (255, 0, 0),  # 纯蓝
                   'green': (0, 125, 0),  # 纯绿
@@ -179,14 +196,17 @@ def main():
 
     #
     pygame.init()
-    SUBFACE = pygame.display.set_mode((800, 600))
+    SUBFACE = pygame.display.set_mode((1024, 640))
     pygame.display.set_caption('答题游戏 version 1.0 Demo')
 
     titleFont = pygame.font.Font('font/YaHei.ttf', 60)
     globalFont = pygame.font.Font('font/YaHei.ttf', 36)
-    helpFont = pygame.font.Font('font/YaHei.ttf', 24)
+    questionFont = pygame.font.Font('font/huakan.ttf', 36)
+    answerFont = pygame.font.Font('font/huakan.ttf', 36)
+    helpFont = pygame.font.Font('font/huakan.ttf', 24)
     game_title()
     corrent = 0
+
     while True:
         result = load_game(corrent)
 
@@ -194,7 +214,7 @@ def main():
             corrent = 0
             game_title()
         elif result == 'next':
-            if corrent == len(game_level)-1:
+            if corrent == len(game_level) - 1:
                 corrent = 0
             else:
                 corrent += 1
