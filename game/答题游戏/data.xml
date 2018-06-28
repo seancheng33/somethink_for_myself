@@ -36,4 +36,113 @@
         </answer>
         <correct>3</correct>
     </question>
+    <question title="零时到八九点钟，有许多称谓，如：凌晨、黎明、清晨、早晨等，你知道凌晨是哪一段时间？">
+        <answer>
+            <a>零时至六时</a>
+            <b>参时到六时</b>
+            <c>天快亮时</c>
+            <d>天刚亮时</d>
+        </answer>
+        <correct>1</correct>
+    </question>
+    <question title="世界地球日是每年的哪一天？">
+        <answer>
+            <a>4月22日</a>
+            <b>12月1日</b>
+            <c>3月12日</c>
+            <d>5月1日</d>
+        </answer>
+        <correct>1</correct>
+    </question>
+    <question title="我国现有文献中最早引用勾股定理的是？">
+        <answer>
+            <a>《九章算术》</a>
+            <b>《周髀算经》</b>
+            <c>《纵横图》</c>
+            <d>《孙子算经》</d>
+        </answer>
+        <correct>2</correct>
+    </question>
+    <question title="由于外力的变化，物体的加速度逐渐减小，在其加速度变为零之前">
+        <answer>
+            <a>物体速度逐渐变慢，接近停止</a>
+            <b>物体保持匀速运动</b>
+            <c>物体速度匀速加快</c>
+            <d>物体速度越来越快，但变化速度减慢</d>
+        </answer>
+        <correct>4</correct>
+    </question>
+    <question title="新疆哈密瓜之甜已名闻全国。导致哈密瓜甜度如此之高的原因是">
+        <answer>
+            <a>新疆地区日照时间长，昼夜温差大，雨水不充足</a>
+            <b>哈密瓜品种好</b>
+            <c>新疆气候温暖宜人</c>
+            <d>过于夸大了</d>
+        </answer>
+        <correct>1</correct>
+    </question>
+    <question title="标志着北宋诗文革新运动最高成就的作家是">
+        <answer>
+            <a>王安石</a>
+            <b>苏轼</b>
+            <c>范仲淹</c>
+            <d>欧阳修</d>
+        </answer>
+        <correct>2</correct>
+    </question>
+    <question title="世界上最大的古代土石建筑工程是哪一个？">
+        <answer>
+            <a>中国的万里长城</a>
+            <b>埃及的金字塔</b>
+            <c>古罗马的斗兽场</c>
+            <d>中国的故宫</d>
+        </answer>
+        <correct>1</correct>
+    </question>
+    <question title="以下哪项是建设有中国特色的社会主义理论的精髓？">
+        <answer>
+            <a>一国两制</a>
+            <b>以经济建设为中心</b>
+            <c>坚持四项基本原则，坚持改革开放</c>
+            <d>解决思想，实事求是</d>
+        </answer>
+        <correct>4</correct>
+    </question>
+
+    <question title="决定论和非决定论的分歧在于？">
+        <answer>
+            <a>是否承认矛盾是事物发展的根本动力</a>
+            <b>是否承认联系的普遍性</b>
+            <c>是否承认发展是前进性和曲折性的统一</c>
+            <d>是否承认事物发展的客观规律性和因果联系的客观普遍性</d>
+        </answer>
+        <correct>4</correct>
+    </question>
+    <question title="在哥德巴赫猜想问题上取得迄今最大进展的数学家是？">
+        <answer>
+            <a>陈景润</a>
+            <b>布拉格</b>
+            <c>莱布尼茨</c>
+            <d>冯*诺伊曼</d>
+        </answer>
+        <correct>1</correct>
+    </question>
+    <question title="迄今为止，科学家所发现的最远的天体距离我们一百多亿光年，他们是如何观测到这么远的天体的呢?">
+        <answer>
+            <a>使用高倍望远镜</a>
+            <b>向太空发射激光信号，然后通过计算其反射回来的时间来估算</b>
+            <c>使用特殊的光学望远镜，通过分析到达地球光线的衰变估算出来的</c>
+            <d>宇航员说的</d>
+        </answer>
+        <correct>3</correct>
+    </question>
+    <question title="下列哪一项是与计算机、半导体和原子能齐名的20世纪四项重大发明之一？">
+        <answer>
+            <a>超音速飞机</a>
+            <b>激光器</b>
+            <c>航天飞机</c>
+            <d>人造卫星</d>
+        </answer>
+        <correct>2</correct>
+    </question>
 </collection>
