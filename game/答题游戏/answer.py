@@ -74,7 +74,7 @@ def game_title():
         pygame.time.Clock().tick(30)
 
 
-def load_game(levels,total_score,total_right_score,total_wrong_score):
+def load_game(levels, total_score, total_right_score, total_wrong_score):
     SUBFACE.fill(color_dict['black'])
     title_bg = pygame.image.load('img/title.jpg')
     SUBFACE.blit(title_bg, (0, 0))
@@ -90,17 +90,17 @@ def load_game(levels,total_score,total_right_score,total_wrong_score):
         start = i * 25
         end = (i + 1) * 25
         question_image = questionFont.render(level_question[start:end], True, color_dict['black'])
-        SUBFACE.blit(question_image, (50, 80+(i*30)))
+        SUBFACE.blit(question_image, (50, 80 + (i * 30)))
 
     while True:
         # 右侧的内容
-        level_image = helpFont.render('当前题目：第 '+str(levels+1)+' 题', True, color_dict['orange'])
+        level_image = helpFont.render('当前题目：第 ' + str(levels + 1) + ' 题', True, color_dict['orange'])
         SUBFACE.blit(level_image, (725, 80))
-        score_image = helpFont.render('当前分数：'+str(total_score), True, color_dict['orange'])
+        score_image = helpFont.render('当前分数：' + str(total_score), True, color_dict['orange'])
         SUBFACE.blit(score_image, (725, 120))
-        score_image = helpFont.render('正确题数：'+str(total_right_score), True, color_dict['orange'])
+        score_image = helpFont.render('正确题数：' + str(total_right_score), True, color_dict['orange'])
         SUBFACE.blit(score_image, (725, 160))
-        score_image = helpFont.render('错误题数：'+str(total_wrong_score), True, color_dict['orange'])
+        score_image = helpFont.render('错误题数：' + str(total_wrong_score), True, color_dict['orange'])
         SUBFACE.blit(score_image, (725, 200))
 
         # 显示出答案选项
@@ -151,11 +151,9 @@ def load_game(levels,total_score,total_right_score,total_wrong_score):
             for event in pressed:
                 if event == 1:
                     if level_correct == 1:
-                        score += 100
-                        right_score += 1
+                        return 'yes'
                     else:
-                        wrong_score += 1
-
+                        return 'no'
                     return 'next'
         if item2_rect.left < x < item2_rect.right and item2_rect.top < y < item2_rect.bottom:
             item2_image = answerFont.render('2 - ' + level_answer[1], True, color_dict['gold'])
@@ -164,10 +162,9 @@ def load_game(levels,total_score,total_right_score,total_wrong_score):
             for event in pressed:
                 if event == 1:
                     if level_correct == 2:
-                        score += 100
-                        right_score += 1
+                        return 'yes'
                     else:
-                        wrong_score += 1
+                        return 'no'
                     return 'next'
         if item3_rect.left < x < item3_rect.right and item3_rect.top < y < item3_rect.bottom:
             item3_image = answerFont.render('3 - ' + level_answer[2], True, color_dict['gold'])
@@ -176,10 +173,9 @@ def load_game(levels,total_score,total_right_score,total_wrong_score):
             for event in pressed:
                 if event == 1:
                     if level_correct == 3:
-                        score += 100
-                        right_score += 1
+                        return 'yes'
                     else:
-                        wrong_score += 1
+                        return 'no'
                     return 'next'
         if item4_rect.left < x < item4_rect.right and item4_rect.top < y < item4_rect.bottom:
             item4_image = answerFont.render('4 - ' + level_answer[3], True, color_dict['gold'])
@@ -188,10 +184,9 @@ def load_game(levels,total_score,total_right_score,total_wrong_score):
             for event in pressed:
                 if event == 1:
                     if level_correct == 4:
-                        score += 100
-                        right_score += 1
+                        return 'yes'
                     else:
-                        wrong_score += 1
+                        return 'no'
                     return 'next'
         # 右侧按键的鼠标事件
 
@@ -232,7 +227,7 @@ def load_file(filename):
 
 def main():
     # 全局话声明
-    global SUBFACE, titleFont, globalFont, helpFont, color_dict, game_level, questionFont, answerFont, score,right_score,wrong_score
+    global SUBFACE, titleFont, globalFont, helpFont, color_dict, game_level, questionFont, answerFont, score, right_score, wrong_score
 
     # 颜色字典
     color_dict = {'red': (255, 0, 0),  # 纯红
@@ -264,7 +259,7 @@ def main():
     wrong_score = 0
 
     while True:
-        result = load_game(corrent,score,right_score,wrong_score)
+        result = load_game(corrent, score, right_score, wrong_score)
 
         if 'reset' in result:
             corrent = 0
@@ -276,8 +271,24 @@ def main():
                 corrent = 0
             else:
                 corrent += 1
-            load_game(corrent,score,right_score,wrong_score)
-        elif result == '':
+            load_game(corrent, score, right_score, wrong_score)
+        elif 'yes' in result:
+            if corrent == len(game_level) - 1:
+                corrent = 0
+            else:
+                corrent += 1
+            score += 100
+            right_score += 1
+            load_game(corrent, score, right_score, wrong_score)
+        elif 'no' in result:
+            if corrent == len(game_level) - 1:
+                corrent = 0
+            else:
+                corrent += 1
+
+            wrong_score += 1
+            load_game(corrent, score, right_score, wrong_score)
+        else:
             pass
 
         pygame.display.update()
