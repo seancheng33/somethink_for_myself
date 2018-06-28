@@ -19,14 +19,11 @@ from xml.dom.minidom import parse
 
 def game_title():
     title_text = '大脑 很囧'
-    start_text = '开始游戏'
-    about_text = '基于python3.6.4和pygame制作。'
-    title_bg = pygame.image.load('img/05.jpg')
+    bt_start_text = '开 始 游 戏'
+    bt_about_text = '关 于 游 戏'
+    title_bg = pygame.image.load('img/main.jpg')
     SUBFACE.blit(title_bg, (0, 0))
-    # SUBFACE.fill(color_dict['black'])
-    # tips_image = globalFont.render(start_text, True, color_dict['orange'])
 
-    help_image = helpFont.render(about_text, True, color_dict['white'])
     title_time = 0
     while True:
         if title_time == 0:
@@ -39,17 +36,22 @@ def game_title():
             title_image = titleFont.render(title_text, True, color_dict['lime'])
             title_time = 0
         title_rect = title_image.get_rect()
-        title_rect.centerx = 400
+        title_rect.centerx = SUBFACE.get_rect().centerx
         title_rect.top = 130
 
-        tips_image = globalFont.render(start_text, True, color_dict['orange'])
+        tips_image = globalFont.render(bt_start_text, True, color_dict['orange'])
         tips_rect = tips_image.get_rect()
-        tips_rect.centerx = 400
+        tips_rect.centerx = SUBFACE.get_rect().centerx - 150
         tips_rect.top = 400
+
+        help_image = globalFont.render(bt_about_text, True, color_dict['orange'])
+        help_rect = help_image.get_rect()
+        help_rect.centerx = SUBFACE.get_rect().centerx + 150
+        help_rect.top = 400
 
         SUBFACE.blit(title_image, title_rect)
         SUBFACE.blit(tips_image, tips_rect)
-        SUBFACE.blit(help_image, (240, 500))
+        SUBFACE.blit(help_image, help_rect)
 
         for event in pygame.event.get():
             # 关闭按钮的事件
@@ -61,15 +63,11 @@ def game_title():
                 if event.key == K_ESCAPE:
                     pygame.quit()
                     sys.exit(0)
-                elif event.key == K_SPACE:
-                    # 按下开始键开始游戏
-                    load_game(0)
-                    return
 
         x, y = pygame.mouse.get_pos()
         # 开始按键的鼠标事件，包括了鼠标经过事件和点击事件
         if tips_rect.left < x < tips_rect.right and tips_rect.top < y < tips_rect.bottom:
-            tips_image = globalFont.render(start_text, True, color_dict['red'])
+            tips_image = globalFont.render(bt_start_text, True, color_dict['red'])
             SUBFACE.blit(tips_image, tips_rect)
             pressed_array = pygame.mouse.get_pressed()  # 获取鼠标事件的列表
             for event in pressed_array:
@@ -77,48 +75,65 @@ def game_title():
                     load_game(0)
                     return
 
+        if help_rect.left < x < help_rect.right and help_rect.top < y < help_rect.bottom:
+            help_image = globalFont.render(bt_about_text, True, color_dict['red'])
+            SUBFACE.blit(help_image, help_rect)
+
         pygame.display.update()
-        pygame.time.Clock().tick(60)
+        pygame.time.Clock().tick(30)
 
 
 def load_game(levels):
     SUBFACE.fill(color_dict['black'])
-    title_bg = pygame.image.load('img/03.jpg')
+    title_bg = pygame.image.load('img/title.jpg')
     SUBFACE.blit(title_bg, (0, 0))
     level = game_level[levels]
     level_question = level['question']
     level_answer = level['answers']
     level_correct = int(level['correct'])
 
-    # 背景框
-    q_rect = pygame.Rect(40, 80, 650, 180)
-    a_rect = pygame.Rect(40, 280, 650, 300)
-    h_rect = pygame.Rect(730, 80, 250, 500)
+    tips_text = ['用鼠标选择答案','']
+    score = 0
 
-    q_rect
-
-    # pygame.draw.rect(SUBFACE, color_dict['white'], (40, 80, 650, 180))  # 问题区域
-    # pygame.draw.rect(SUBFACE, color_dict['white'], (40, 280, 650, 300))  # 答案区域
-    # pygame.draw.rect(SUBFACE, color_dict['white'], (730, 80, 250, 500))  # 其他帮助、提示区域
 
     # 右侧的各种选项的显示，包括说明，分数，当前第几题。
-    
-
 
     # 显示出问题
-    question_image = questionFont.render(level_question, True, color_dict['green'])
-    SUBFACE.blit(question_image, (50, 150))
+    question_image = questionFont.render(level_question, True, color_dict['black'])
+    SUBFACE.blit(question_image, (50, 100))
 
     while True:
-        # 显示出答案
+        # 右侧的内容
+        level_image = helpFont.render('当前题目：第 '+str(levels+1)+' 题', True, color_dict['orange'])
+        SUBFACE.blit(level_image, (725, 80))
+        score_image = helpFont.render('当前分数：'+str(score), True, color_dict['orange'])
+        SUBFACE.blit(score_image, (725, 120))
+        score_image = helpFont.render('正确题数：'+str(score), True, color_dict['orange'])
+        SUBFACE.blit(score_image, (725, 160))
+        score_image = helpFont.render('错误题数：'+str(score), True, color_dict['orange'])
+        SUBFACE.blit(score_image, (725, 200))
+        # 显示出答案选项
         item1_image = answerFont.render('1 - ' + level_answer[0], True, color_dict['gold'])
+        item1_rect = item1_image.get_rect()
+        item1_rect.left = 50
+        item1_rect.top = 280
         item2_image = answerFont.render('2 - ' + level_answer[1], True, color_dict['gold'])
+        item2_rect = item2_image.get_rect()
+        item2_rect.left = 50
+        item2_rect.top = 350
         item3_image = answerFont.render('3 - ' + level_answer[2], True, color_dict['gold'])
+        item3_rect = item3_image.get_rect()
+        item3_rect.left = 50
+        item3_rect.top = 420
         item4_image = answerFont.render('4 - ' + level_answer[3], True, color_dict['gold'])
-        SUBFACE.blit(item1_image, (50, 280))
-        SUBFACE.blit(item2_image, (50, 330))
-        SUBFACE.blit(item3_image, (50, 380))
-        SUBFACE.blit(item4_image, (50, 430))
+        item4_rect = item4_image.get_rect()
+        item4_rect.left = 50
+        item4_rect.top = 490
+
+        SUBFACE.blit(item1_image, item1_rect)
+        SUBFACE.blit(item2_image, item2_rect)
+        SUBFACE.blit(item3_image, item3_rect)
+        SUBFACE.blit(item4_image, item4_rect)
 
         for event in pygame.event.get():
             # 关闭按钮的事件
@@ -137,21 +152,24 @@ def load_game(levels):
 
                     return 'next'
 
-            # 鼠标控制事件
-            x,y = pygame.mouse.get_pos()
+        # 鼠标控制事件
+        x, y = pygame.mouse.get_pos()
 
+        if item1_rect.left < x < item1_rect.right and item1_rect.top < y < item1_rect.bottom:
+            item1_image = answerFont.render('1 - ' + level_answer[0], True, color_dict['white'])
+            SUBFACE.blit(item1_image, item1_rect)
+        if item2_rect.left < x < item2_rect.right and item2_rect.top < y < item2_rect.bottom:
+            item2_image = answerFont.render('2 - ' + level_answer[1], True, color_dict['white'])
+            SUBFACE.blit(item2_image, item2_rect)
+        if item3_rect.left < x < item3_rect.right and item3_rect.top < y < item3_rect.bottom:
+            item3_image = answerFont.render('3 - ' + level_answer[2], True, color_dict['white'])
+            SUBFACE.blit(item3_image, item3_rect)
+        if item4_rect.left < x < item4_rect.right and item4_rect.top < y < item4_rect.bottom:
+            item4_image = answerFont.render('4 - ' + level_answer[3], True, color_dict['white'])
+            SUBFACE.blit(item4_image, item4_rect)
 
         pygame.display.update()
-        pygame.time.Clock().tick(30)
-
-
-def input_handle(number, correct):
-    if number == correct:
-        text = globalFont.render('答案正确', True, color_dict['green'])
-    else:
-        text = globalFont.render('答案错误', True, color_dict['red'])
-
-    return SUBFACE.blit(text, (50, 550))
+        pygame.time.Clock().tick(60)
 
 
 def load_file(filename):
@@ -181,7 +199,10 @@ def load_file(filename):
 
 
 def main():
-    global SUBFACE, titleFont, globalFont, helpFont, color_dict, game_level,questionFont,answerFont
+    # 全局话声明
+    global SUBFACE, titleFont, globalFont, helpFont, color_dict, game_level, questionFont, answerFont
+
+    # 颜色字典
     color_dict = {'red': (255, 0, 0),  # 纯红
                   'blue': (255, 0, 0),  # 纯蓝
                   'green': (0, 125, 0),  # 纯绿
@@ -194,15 +215,15 @@ def main():
 
     game_level = load_file("data.xml")
 
-    #
+    # 初始化
     pygame.init()
     SUBFACE = pygame.display.set_mode((1024, 640))
     pygame.display.set_caption('答题游戏 version 1.0 Demo')
 
-    titleFont = pygame.font.Font('font/YaHei.ttf', 60)
+    titleFont = pygame.font.Font('font/YaHei.ttf', 150)
     globalFont = pygame.font.Font('font/YaHei.ttf', 36)
-    questionFont = pygame.font.Font('font/huakan.ttf', 36)
-    answerFont = pygame.font.Font('font/huakan.ttf', 36)
+    questionFont = pygame.font.Font('font/huakan.ttf', 24)
+    answerFont = pygame.font.Font('font/huakan.ttf', 24)
     helpFont = pygame.font.Font('font/huakan.ttf', 24)
     game_title()
     corrent = 0
@@ -210,10 +231,10 @@ def main():
     while True:
         result = load_game(corrent)
 
-        if result == 'reset':
+        if 'reset' in result:
             corrent = 0
             game_title()
-        elif result == 'next':
+        elif 'next' in result:
             if corrent == len(game_level) - 1:
                 corrent = 0
             else:
@@ -223,7 +244,7 @@ def main():
             pass
 
         pygame.display.update()
-        pygame.time.Clock().tick(30)
+        pygame.time.Clock().tick(60)
 
 
 if __name__ == '__main__':
