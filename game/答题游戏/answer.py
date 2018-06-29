@@ -17,7 +17,7 @@ def game_title():
     bt_about_text = '关 于 游 戏'
     title_bg = pygame.image.load('img/main.jpg')
     SUBFACE.blit(title_bg, (0, 0))
-
+    title_image = titleFont.render(title_text, True, color_dict['green'])
     title_time = 0
     while True:
         if title_time == 0:
@@ -69,6 +69,10 @@ def game_title():
         if help_rect.left < x < help_rect.right and help_rect.top < y < help_rect.bottom:
             help_image = globalFont.render(bt_about_text, True, color_dict['red'])
             SUBFACE.blit(help_image, help_rect)
+            pressed_array = pygame.mouse.get_pressed()  # 获取鼠标事件的列表
+            for event in pressed_array:
+                if event == 1:  # 1为鼠标左键点击事件
+                    return 'about'
 
         pygame.display.update()
         pygame.time.Clock().tick(30)
@@ -85,7 +89,7 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
 
     # 右侧的各种选项的显示，包括说明，分数，当前第几题。
 
-    # 显示出问题,按照宽度是28个字符串的规格显示出来。
+    # 显示出问题,按照宽度是25个字符串的规格显示出来。
     for i in range(int(len(level_question) / 25 + 1)):
         start = i * 25
         end = (i + 1) * 25
@@ -150,44 +154,44 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
             pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
+                    pygame.time.wait(1000)  # 等待一秒，防止点击太快变成连下一题也点了
                     if level_correct == 1:
                         return 'yes'
                     else:
                         return 'no'
-                    return 'next'
         if item2_rect.left < x < item2_rect.right and item2_rect.top < y < item2_rect.bottom:
             item2_image = answerFont.render('2 - ' + level_answer[1], True, color_dict['gold'])
             SUBFACE.blit(item2_image, item2_rect)
             pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
+                    pygame.time.wait(1000)  # 等待一秒，防止点击太快变成连下一题也点了
                     if level_correct == 2:
                         return 'yes'
                     else:
                         return 'no'
-                    return 'next'
         if item3_rect.left < x < item3_rect.right and item3_rect.top < y < item3_rect.bottom:
             item3_image = answerFont.render('3 - ' + level_answer[2], True, color_dict['gold'])
             SUBFACE.blit(item3_image, item3_rect)
             pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
+                    pygame.time.wait(1000)  # 等待一秒，防止点击太快变成连下一题也点了
                     if level_correct == 3:
                         return 'yes'
                     else:
                         return 'no'
-                    return 'next'
         if item4_rect.left < x < item4_rect.right and item4_rect.top < y < item4_rect.bottom:
             item4_image = answerFont.render('4 - ' + level_answer[3], True, color_dict['gold'])
             SUBFACE.blit(item4_image, item4_rect)
             pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
+                    pygame.time.wait(1000)  # 等待一秒，防止点击太快变成连下一题也点了
                     if level_correct == 4:
                         return 'yes'
                     else:
                         return 'no'
-                    return 'next'
         # 右侧按键的鼠标事件
 
         pygame.display.update()
@@ -209,9 +213,9 @@ def load_file(filename):
 
     for item in questions:
         q_list = {}
+        answerList = []
         question = item.getAttribute("title")
         answer_items = item.getElementsByTagName("answer")  # 返回一个列表
-        answerList = []
         answerList.append(answer_items[0].getElementsByTagName("a")[0].childNodes[0].data)
         answerList.append(answer_items[0].getElementsByTagName("b")[0].childNodes[0].data)
         answerList.append(answer_items[0].getElementsByTagName("c")[0].childNodes[0].data)
@@ -266,6 +270,8 @@ def main():
             game_title()
         elif 'start' in result:
             load_game(corrent, score, right_score, wrong_score)
+        elif 'about' in result:
+            pass
         elif 'next' in result:
             if corrent == len(game_level) - 1:
                 corrent = 0
