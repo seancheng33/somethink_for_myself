@@ -16,10 +16,11 @@ def game_title():
     bt_start_text = '开 始 游 戏'
     bt_about_text = '关 于 游 戏'
     title_bg = pygame.image.load('img/main.jpg')
-    SUBFACE.blit(title_bg, (0, 0))
     title_image = titleFont.render(title_text, True, color_dict['green'])
     title_time = 0
+    mouseCursor = pygame.image.load('img/cursor.png').convert_alpha()  # 加载鼠标图片
     while True:
+        SUBFACE.blit(title_bg, (0, 0))
         if title_time == 0:
             title_image = titleFont.render(title_text, True, color_dict['white'])
             title_time = 1
@@ -57,6 +58,9 @@ def game_title():
                     close_event()
 
         x, y = pygame.mouse.get_pos()
+
+
+
         # 开始按键的鼠标事件，包括了鼠标经过事件和点击事件
         if tips_rect.left < x < tips_rect.right and tips_rect.top < y < tips_rect.bottom:
             tips_image = globalFont.render(bt_start_text, True, color_dict['red'])
@@ -74,6 +78,13 @@ def game_title():
                 if event == 1:  # 1为鼠标左键点击事件
                     return 'about'
 
+        # 自定义鼠标样式
+        pygame.mouse.set_visible(False)
+
+        x -= 0
+        y -= 0
+
+        SUBFACE.blit(mouseCursor, (x, y))
         pygame.display.update()
         pygame.time.Clock().tick(30)
 
@@ -81,22 +92,26 @@ def game_title():
 def load_game(levels, total_score, total_right_score, total_wrong_score):
     SUBFACE.fill(color_dict['black'])
     title_bg = pygame.image.load('img/title.jpg')
-    SUBFACE.blit(title_bg, (0, 0))
+
     level = game_level[levels]
     level_question = level['question']
     level_answer = level['answers']
     level_correct = int(level['correct'])
 
-    # 右侧的各种选项的显示，包括说明，分数，当前第几题。
+    mouseCursor = pygame.image.load('img/cursor.png').convert_alpha()
 
-    # 显示出问题,按照宽度是25个字符串的规格显示出来。
-    for i in range(int(len(level_question) / 25 + 1)):
-        start = i * 25
-        end = (i + 1) * 25
-        question_image = questionFont.render(level_question[start:end], True, color_dict['black'])
-        SUBFACE.blit(question_image, (50, 80 + (i * 30)))
+
 
     while True:
+        SUBFACE.blit(title_bg, (0, 0))
+
+        # 显示出问题,按照宽度是25个字符串的规格显示出来。
+        for i in range(int(len(level_question) / 25 + 1)):
+            start = i * 25
+            end = (i + 1) * 25
+            question_image = questionFont.render(level_question[start:end], True, color_dict['black'])
+            SUBFACE.blit(question_image, (50, 80 + (i * 30)))
+
         # 右侧的内容
         level_image = helpFont.render('当前题目：第 ' + str(levels + 1) + ' 题', True, color_dict['orange'])
         SUBFACE.blit(level_image, (725, 80))
@@ -194,6 +209,12 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
                         return 'no'
         # 右侧按键的鼠标事件
 
+
+        # 自定义鼠标样式
+        pygame.mouse.set_visible(False)
+        x -= 0
+        y -= 0
+        SUBFACE.blit(mouseCursor, (x, y))
         pygame.display.update()
         pygame.time.Clock().tick(60)
 
@@ -249,6 +270,7 @@ def main():
     # 初始化
     pygame.init()
     SUBFACE = pygame.display.set_mode((1024, 640))
+    pygame.display.set_icon(pygame.image.load('img/delbrucks-brain.ico'))
     pygame.display.set_caption('大脑很囧--答题类游戏 Version 1.0.0')
 
     titleFont = pygame.font.Font('font/YaHei.ttf', 150)
@@ -272,27 +294,18 @@ def main():
             load_game(corrent, score, right_score, wrong_score)
         elif 'about' in result:
             pass
-        elif 'next' in result:
-            if corrent == len(game_level) - 1:
-                corrent = 0
-            else:
-                corrent += 1
-            load_game(corrent, score, right_score, wrong_score)
-        elif 'yes' in result:
-            if corrent == len(game_level) - 1:
-                corrent = 0
-            else:
-                corrent += 1
-            score += 100
-            right_score += 1
-            load_game(corrent, score, right_score, wrong_score)
-        elif 'no' in result:
+        elif result in ('next', 'yes', 'no'):
             if corrent == len(game_level) - 1:
                 corrent = 0
             else:
                 corrent += 1
 
-            wrong_score += 1
+            if result in 'yes':
+                score += 100
+                right_score += 1
+            elif result in 'no':
+                wrong_score += 1
+
             load_game(corrent, score, right_score, wrong_score)
         else:
             pass
