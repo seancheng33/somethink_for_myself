@@ -225,7 +225,8 @@ def end_game(score, right_score, wrong_score):
     score_rect.top = 100
     score_rect.centerx = SUBFACE.get_rect().centerx
 
-    right_img = globalFont.render('准确率： ' + str(right_score / (right_score + wrong_score)) + ' %', True, color_dict['orange'])
+    total_right_percent = right_score / (right_score + wrong_score)
+    right_img = globalFont.render('准确率： ' + str(float('%.2f' % total_right_percent)) + ' %', True, color_dict['orange'])
     right_rect = right_img.get_rect()
     right_rect.top = 150
     right_rect.centerx = SUBFACE.get_rect().centerx
@@ -294,7 +295,18 @@ def load_file(filename):
         q_list['correct'] = correct
         game_level.append(q_list)
 
-    return game_level
+
+    # 生产随机指定数量的题集
+    tmp_level = set()
+    while len(tmp_level) < 10:
+        randNum = random.randint(0, len(game_level)-1)
+        tmp_level.add(randNum)
+
+    new_question = []
+    for i in tmp_level:
+        new_question.append(game_level[i])
+
+    return new_question
 
 
 def main():
@@ -326,7 +338,7 @@ def main():
     answerFont = pygame.font.Font('font/huakan.ttf', 22)
     helpFont = pygame.font.Font('font/huakan.ttf', 24)
     result = game_title()
-    corrent = random.randint(0, len(game_level) - 1)
+    corrent = 0
     score = 0
     right_score = 0
     wrong_score = 0
@@ -340,20 +352,16 @@ def main():
         elif 'about' in result:
             pass
         elif result in ('next', 'yes', 'no'):
-            # if corrent == len(game_level) - 1:
-            #     corrent = 0
-            # else:
-            #     corrent += 1
-            corrent = random.randint(0, len(game_level) - 1)
+            if corrent == len(game_level) - 1:
+                result = end_game(score, right_score, wrong_score)
+            else:
+                corrent += 1
 
             if result in 'yes':
                 score += 100
                 right_score += 1
             elif result in 'no':
                 wrong_score += 1
-
-            if (right_score + wrong_score) == 2:  # 如果对和错的题达到指定的数量，答题结束，统计数据。
-                result = end_game(score, right_score, wrong_score)
 
             result = load_game(corrent, score, right_score, wrong_score)
         else:
