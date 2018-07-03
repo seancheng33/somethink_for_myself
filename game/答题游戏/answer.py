@@ -226,7 +226,7 @@ def end_game(score, right_score, wrong_score):
     score_rect.centerx = SUBFACE.get_rect().centerx
 
     total_right_percent = right_score / (right_score + wrong_score)
-    right_img = globalFont.render('准确率： ' + str(float('%.2f' % total_right_percent)) + ' %', True, color_dict['orange'])
+    right_img = globalFont.render('正确率： ' + str(total_right_percent*100) + ' %', True, color_dict['orange'])
     right_rect = right_img.get_rect()
     right_rect.top = 150
     right_rect.centerx = SUBFACE.get_rect().centerx
@@ -240,12 +240,12 @@ def end_game(score, right_score, wrong_score):
     bg_rect = bg_img.get_rect()
     bg_rect.center = SUBFACE.get_rect().center
 
-    bg_fill = pygame.Rect(0, 0, 400, 500)
+    bg_fill = pygame.Rect((0, 0), (400, 500))
     bg_fill.center = SUBFACE.get_rect().center
 
     while True:
         SUBFACE.blit(bg_img, bg_rect)
-        pygame.draw.rect(SUBFACE, (255, 255, 255), bg_fill)
+        pygame.draw.rect(SUBFACE, (255, 255, 255, 80), bg_fill)
         pygame.draw.rect(SUBFACE, (0, 0, 0), bg_fill, 2)
         SUBFACE.blit(score_img, score_rect)
         SUBFACE.blit(right_score_img, right_score_rect)
@@ -257,6 +257,8 @@ def end_game(score, right_score, wrong_score):
             elif event.type == KEYUP:
                 if event.key == K_ESCAPE:
                     close_program()
+                elif event.key == K_RETURN:
+                    return 'reset'
 
         pygame.display.update()
         pygame.time.Clock().tick(60)
@@ -306,6 +308,9 @@ def load_file(filename):
     for i in tmp_level:
         new_question.append(game_level[i])
 
+    # 因为set的缘故，提取出来的题目是安装顺序排列的，需要在打乱一次
+    random.shuffle(new_question)
+
     return new_question
 
 
@@ -347,23 +352,22 @@ def main():
             corrent = 0
             result = game_title()
         elif 'start' in result:
-
             result = load_game(corrent, score, right_score, wrong_score)
         elif 'about' in result:
             pass
         elif result in ('next', 'yes', 'no'):
-            if corrent == len(game_level) - 1:
-                result = end_game(score, right_score, wrong_score)
-            else:
-                corrent += 1
-
             if result in 'yes':
                 score += 100
                 right_score += 1
             elif result in 'no':
                 wrong_score += 1
 
-            result = load_game(corrent, score, right_score, wrong_score)
+            # 先计分，否则最后的统计会出错
+            if corrent == len(game_level) - 1:
+                result = end_game(score, right_score, wrong_score)
+            else:
+                corrent += 1
+                result = load_game(corrent, score, right_score, wrong_score)
         else:
             pass
 

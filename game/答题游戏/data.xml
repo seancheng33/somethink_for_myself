@@ -136,12 +136,39 @@
         </answer>
         <correct>3</correct>
     </question>
-    <question title="下列哪一项是与计算机、半导体和原子能齐名的20世纪四项重大发明之一？">
+    <question title="在python3下输入100000000L，会得到以下哪个显示？">
         <answer>
-            <a>超音速飞机</a>
-            <b>激光器</b>
-            <c>航天飞机</c>
-            <d>人造卫星</d>
+            <a>100000000L</a>
+            <b>100000000</b>
+            <c>SyntaxError: invalid syntax</c>
+            <d>1e8</d>
+        </answer>
+        <correct>3</correct>
+    </question>
+    <question title="Python3中获取用户输入并默认以字符串存储的函数是？">
+        <answer>
+            <a>raw_input</a>
+            <b>input</b>
+            <c>raw</c>
+            <d>print</d>
+        </answer>
+        <correct>2</correct>
+    </question>
+    <question title="float('inf')-1执行后的结果是什么？">
+        <answer>
+            <a>1</a>
+            <b>inf</b>
+            <c>-inf</c>
+            <d>0</d>
+        </answer>
+        <correct>2</correct>
+    </question>
+    <question title="表达式sum(range(5))的值为什么？">
+        <answer>
+            <a>9</a>
+            <b>10</b>
+            <c>11</c>
+            <d>12</d>
         </answer>
         <correct>2</correct>
     </question>
