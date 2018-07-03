@@ -4,6 +4,7 @@
 @CreateTime   : 2018/6/19
 @Program      : pygame练习，做一个答题的程序，有游戏的标题界面，鼠标选择答案的形式作答，题库使用xml文件的形式。
 '''
+import random
 import sys
 
 import pygame
@@ -51,29 +52,28 @@ def game_title():
         for event in pygame.event.get():
             # 关闭按钮的事件
             if event.type == QUIT:
-                close_event()
+                close_program()
             elif event.type == KEYDOWN:
                 # 按键按下后抬起的事件判断
                 if event.key == K_ESCAPE:
-                    close_event()
+                    close_program()
 
         x, y = pygame.mouse.get_pos()
-
-
+        pressed_array = pygame.mouse.get_pressed()  # 获取鼠标事件的列表
 
         # 开始按键的鼠标事件，包括了鼠标经过事件和点击事件
         if tips_rect.left < x < tips_rect.right and tips_rect.top < y < tips_rect.bottom:
             tips_image = globalFont.render(bt_start_text, True, color_dict['red'])
             SUBFACE.blit(tips_image, tips_rect)
-            pressed_array = pygame.mouse.get_pressed()  # 获取鼠标事件的列表
+
             for event in pressed_array:
                 if event == 1:  # 1为鼠标左键点击事件
                     return 'start'
 
+        # 关于按键的鼠标事件
         if help_rect.left < x < help_rect.right and help_rect.top < y < help_rect.bottom:
             help_image = globalFont.render(bt_about_text, True, color_dict['red'])
             SUBFACE.blit(help_image, help_rect)
-            pressed_array = pygame.mouse.get_pressed()  # 获取鼠标事件的列表
             for event in pressed_array:
                 if event == 1:  # 1为鼠标左键点击事件
                     return 'about'
@@ -100,9 +100,8 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
 
     mouseCursor = pygame.image.load('img/cursor.png').convert_alpha()
 
-
-
     while True:
+
         SUBFACE.blit(title_bg, (0, 0))
 
         # 显示出问题,按照宽度是25个字符串的规格显示出来。
@@ -148,11 +147,11 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
         for event in pygame.event.get():
             # 关闭按钮的事件
             if event.type == QUIT:
-                close_event()
+                close_program()
             elif event.type == KEYDOWN:
                 # 按键按下后抬起的事件判断
                 if event.key == K_ESCAPE:
-                    close_event()
+                    close_program()
                 elif event.key == K_BACKSPACE:
                     # 按回退键，返回到标题界面。
                     return 'reset'
@@ -209,22 +208,70 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
                         return 'no'
         # 右侧按键的鼠标事件
 
-
         # 自定义鼠标样式
         pygame.mouse.set_visible(False)
         x -= 0
         y -= 0
         SUBFACE.blit(mouseCursor, (x, y))
+
         pygame.display.update()
         pygame.time.Clock().tick(60)
 
 
-def close_event():
+def end_game(score, right_score, wrong_score):
+    # 游戏的结束界面，对刚才完过的游戏做出一些数据统计。
+    score_img = globalFont.render('最终总成绩： ' + str(score), True, color_dict['orange'])
+    score_rect = score_img.get_rect()
+    score_rect.top = 100
+    score_rect.centerx = SUBFACE.get_rect().centerx
+
+    right_img = globalFont.render('准确率： ' + str(right_score / (right_score + wrong_score)) + ' %', True, color_dict['orange'])
+    right_rect = right_img.get_rect()
+    right_rect.top = 150
+    right_rect.centerx = SUBFACE.get_rect().centerx
+
+    right_score_img = globalFont.render('正确题数： ' + str(right_score), True, color_dict['orange'])
+    right_score_rect = right_score_img.get_rect()
+    right_score_rect.top = 200
+    right_score_rect.centerx = SUBFACE.get_rect().centerx
+
+    bg_img = pygame.image.load('img/end_bg.jpg').convert_alpha()
+    bg_rect = bg_img.get_rect()
+    bg_rect.center = SUBFACE.get_rect().center
+
+    bg_fill = pygame.Rect(0, 0, 400, 500)
+    bg_fill.center = SUBFACE.get_rect().center
+
+    while True:
+        SUBFACE.blit(bg_img, bg_rect)
+        pygame.draw.rect(SUBFACE, (255, 255, 255), bg_fill)
+        pygame.draw.rect(SUBFACE, (0, 0, 0), bg_fill, 2)
+        SUBFACE.blit(score_img, score_rect)
+        SUBFACE.blit(right_score_img, right_score_rect)
+        SUBFACE.blit(right_img, right_rect)
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                close_program()
+            elif event.type == KEYUP:
+                if event.key == K_ESCAPE:
+                    close_program()
+
+        pygame.display.update()
+        pygame.time.Clock().tick(60)
+
+
+def about_this():
+    pass
+
+
+def close_program():
     pygame.quit()
     sys.exit(0)
 
 
 def load_file(filename):
+    # 读取xml文件中的题库
     question_data = parse(filename)
     # 得到根节点
     root = question_data.documentElement
@@ -278,27 +325,26 @@ def main():
     questionFont = pygame.font.Font('font/huakan.ttf', 24)
     answerFont = pygame.font.Font('font/huakan.ttf', 22)
     helpFont = pygame.font.Font('font/huakan.ttf', 24)
-    game_title()
-    corrent = 0
+    result = game_title()
+    corrent = random.randint(0, len(game_level) - 1)
     score = 0
     right_score = 0
     wrong_score = 0
-
     while True:
-        result = load_game(corrent, score, right_score, wrong_score)
-
         if 'reset' in result:
             corrent = 0
-            game_title()
+            result = game_title()
         elif 'start' in result:
-            load_game(corrent, score, right_score, wrong_score)
+
+            result = load_game(corrent, score, right_score, wrong_score)
         elif 'about' in result:
             pass
         elif result in ('next', 'yes', 'no'):
-            if corrent == len(game_level) - 1:
-                corrent = 0
-            else:
-                corrent += 1
+            # if corrent == len(game_level) - 1:
+            #     corrent = 0
+            # else:
+            #     corrent += 1
+            corrent = random.randint(0, len(game_level) - 1)
 
             if result in 'yes':
                 score += 100
@@ -306,7 +352,10 @@ def main():
             elif result in 'no':
                 wrong_score += 1
 
-            load_game(corrent, score, right_score, wrong_score)
+            if (right_score + wrong_score) == 2:  # 如果对和错的题达到指定的数量，答题结束，统计数据。
+                result = end_game(score, right_score, wrong_score)
+
+            result = load_game(corrent, score, right_score, wrong_score)
         else:
             pass
 
