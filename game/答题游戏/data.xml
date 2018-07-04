@@ -109,30 +109,30 @@
         <correct>4</correct>
     </question>
 
-    <question title="决定论和非决定论的分歧在于？">
+    <question title="以下哪个是不合法的布尔表达式？">
         <answer>
-            <a>是否承认矛盾是事物发展的根本动力</a>
-            <b>是否承认联系的普遍性</b>
-            <c>是否承认发展是前进性和曲折性的统一</c>
-            <d>是否承认事物发展的客观规律性和因果联系的客观普遍性</d>
+            <a>x in range(6)</a>
+            <b>3=a</b>
+            <c>e>5 and 4==f</c>
+            <d>(x>6)>5</d>
         </answer>
-        <correct>4</correct>
+        <correct>2</correct>
     </question>
-    <question title="在哥德巴赫猜想问题上取得迄今最大进展的数学家是？">
+    <question title="以下哪项不是Python支持的数据类型？">
         <answer>
-            <a>陈景润</a>
-            <b>布拉格</b>
-            <c>莱布尼茨</c>
-            <d>冯*诺伊曼</d>
+            <a>char</a>
+            <b>int</b>
+            <c>float</c>
+            <d>list</d>
         </answer>
         <correct>1</correct>
     </question>
-    <question title="迄今为止，科学家所发现的最远的天体距离我们一百多亿光年，他们是如何观测到这么远的天体的呢?">
+    <question title="以下不能创建一个字典的词句是？">
         <answer>
-            <a>使用高倍望远镜</a>
-            <b>向太空发射激光信号，然后通过计算其反射回来的时间来估算</b>
-            <c>使用特殊的光学望远镜，通过分析到达地球光线的衰变估算出来的</c>
-            <d>宇航员说的</d>
+            <a>dic1 = {}(</a>
+            <b>dic2 = {123:345}</b>
+            <c>dic3 = {[1,2,3]:'uestc'}</c>
+            <d>dic4 = {(1,2,3):'uestc'}</d>
         </answer>
         <correct>3</correct>
     </question>
@@ -169,6 +169,15 @@
             <b>10</b>
             <c>11</c>
             <d>12</d>
+        </answer>
+        <correct>2</correct>
+    </question>
+    <question title="下面哪个不是Python合法的标识符？">
+        <answer>
+            <a>int32</a>
+            <b>40XL</b>
+            <c>self</c>
+            <d>__name__</d>
         </answer>
         <correct>2</correct>
     </question>

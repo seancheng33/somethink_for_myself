@@ -4,6 +4,7 @@
 @CreateTime   : 2018/6/19
 @Program      : pygame练习，做一个答题的程序，有游戏的标题界面，鼠标选择答案的形式作答，题库使用xml文件的形式。
 '''
+import os
 import random
 import sys
 
@@ -86,7 +87,7 @@ def game_title():
 
         SUBFACE.blit(mouseCursor, (x, y))
         pygame.display.update()
-        pygame.time.Clock().tick(30)
+        pygame.time.Clock().tick(20)
 
 
 def load_game(levels, total_score, total_right_score, total_wrong_score):
@@ -125,19 +126,19 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
         item1_image = answerFont.render('1 - ' + level_answer[0], True, color_dict['red'])
         item1_rect = item1_image.get_rect()
         item1_rect.left = 50
-        item1_rect.top = 280
+        item1_rect.top = 310
         item2_image = answerFont.render('2 - ' + level_answer[1], True, color_dict['red'])
         item2_rect = item2_image.get_rect()
         item2_rect.left = 50
-        item2_rect.top = 350
+        item2_rect.top = 380
         item3_image = answerFont.render('3 - ' + level_answer[2], True, color_dict['red'])
         item3_rect = item3_image.get_rect()
         item3_rect.left = 50
-        item3_rect.top = 420
+        item3_rect.top = 450
         item4_image = answerFont.render('4 - ' + level_answer[3], True, color_dict['red'])
         item4_rect = item4_image.get_rect()
         item4_rect.left = 50
-        item4_rect.top = 490
+        item4_rect.top = 520
 
         SUBFACE.blit(item1_image, item1_rect)
         SUBFACE.blit(item2_image, item2_rect)
@@ -215,41 +216,48 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
         SUBFACE.blit(mouseCursor, (x, y))
 
         pygame.display.update()
-        pygame.time.Clock().tick(60)
+        pygame.time.Clock().tick(30)
 
 
 def end_game(score, right_score, wrong_score):
     # 游戏的结束界面，对刚才完过的游戏做出一些数据统计。
     score_img = globalFont.render('最终总成绩： ' + str(score), True, color_dict['orange'])
     score_rect = score_img.get_rect()
-    score_rect.top = 100
+    score_rect.top = 150
     score_rect.centerx = SUBFACE.get_rect().centerx
 
     total_right_percent = right_score / (right_score + wrong_score)
     right_img = globalFont.render('正确率： ' + str(total_right_percent*100) + ' %', True, color_dict['orange'])
     right_rect = right_img.get_rect()
-    right_rect.top = 150
+    right_rect.top = 200
     right_rect.centerx = SUBFACE.get_rect().centerx
 
     right_score_img = globalFont.render('正确题数： ' + str(right_score), True, color_dict['orange'])
     right_score_rect = right_score_img.get_rect()
-    right_score_rect.top = 200
+    right_score_rect.top = 250
     right_score_rect.centerx = SUBFACE.get_rect().centerx
 
     bg_img = pygame.image.load('img/end_bg.jpg').convert_alpha()
     bg_rect = bg_img.get_rect()
     bg_rect.center = SUBFACE.get_rect().center
 
-    bg_fill = pygame.Rect((0, 0), (400, 500))
-    bg_fill.center = SUBFACE.get_rect().center
+    tip_img = globalFont.render('按 Enter 返回标题界面；按 ESC 退出游戏',True,color_dict['red'])
+    tip_rect = tip_img.get_rect()
+    tip_rect.centerx = SUBFACE.get_rect().centerx
+    tip_rect.bottom = 540
+
+    bg_fill = pygame.Rect((0, 0), (400, 300))
+    bg_fill.centerx = SUBFACE.get_rect().centerx
+    bg_fill.top = 80
 
     while True:
         SUBFACE.blit(bg_img, bg_rect)
-        pygame.draw.rect(SUBFACE, (255, 255, 255, 80), bg_fill)
-        pygame.draw.rect(SUBFACE, (0, 0, 0), bg_fill, 2)
+        pygame.draw.rect(SUBFACE, color_dict['white'], bg_fill)
+        pygame.draw.rect(SUBFACE, color_dict['red'], bg_fill, 4)
         SUBFACE.blit(score_img, score_rect)
         SUBFACE.blit(right_score_img, right_score_rect)
         SUBFACE.blit(right_img, right_rect)
+        SUBFACE.blit(tip_img, tip_rect)
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -261,11 +269,33 @@ def end_game(score, right_score, wrong_score):
                     return 'reset'
 
         pygame.display.update()
-        pygame.time.Clock().tick(60)
+        pygame.time.Clock().tick(30)
 
 
 def about_this():
-    pass
+    productName = '大脑很囧'
+    programBy = 'SeanCheng'
+    desingBy = 'SeanCheng'
+    guiDesing = 'SeanCheng'
+    copyRight = 'CopyRight © SeanCheng'
+
+
+
+    while True:
+        SUBFACE.fill(color_dict['black'])
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                close_program()
+            elif event.type == KEYUP:
+                if event.key == K_ESCAPE:
+                    close_program()
+                elif event.key == K_RETURN:
+
+                    return 'reset'
+
+        pygame.display.update()
+        pygame.time.Clock().tick(30)
 
 
 def close_program():
@@ -274,6 +304,7 @@ def close_program():
 
 
 def load_file(filename):
+    assert os.path.exists(filename), '题库文件: %s 不存在，游戏无法执行。' % (filename)
     # 读取xml文件中的题库
     question_data = parse(filename)
     # 得到根节点
@@ -338,10 +369,10 @@ def main():
     pygame.display.set_caption('大脑很囧--答题类游戏 Version 1.0.0')
 
     titleFont = pygame.font.Font('font/YaHei.ttf', 150)
-    globalFont = pygame.font.Font('font/YaHei.ttf', 36)
-    questionFont = pygame.font.Font('font/huakan.ttf', 24)
-    answerFont = pygame.font.Font('font/huakan.ttf', 22)
-    helpFont = pygame.font.Font('font/huakan.ttf', 24)
+    globalFont = pygame.font.Font('font/Hei.ttf', 36)
+    questionFont = pygame.font.Font('font/HuaKanSong.ttf', 24)
+    answerFont = pygame.font.Font('font/HuaKanSong.ttf', 22)
+    helpFont = pygame.font.Font('font/HuaKanSong.ttf', 24)
     result = game_title()
     corrent = 0
     score = 0
@@ -349,12 +380,13 @@ def main():
     wrong_score = 0
     while True:
         if 'reset' in result:
+            game_level = load_file("data.xml")
             corrent = 0
             result = game_title()
         elif 'start' in result:
             result = load_game(corrent, score, right_score, wrong_score)
         elif 'about' in result:
-            pass
+            about_this()
         elif result in ('next', 'yes', 'no'):
             if result in 'yes':
                 score += 100
@@ -362,7 +394,7 @@ def main():
             elif result in 'no':
                 wrong_score += 1
 
-            # 先计分，否则最后的统计会出错
+            # 先计分，否则最后的统计会因为少统计了一条而出错
             if corrent == len(game_level) - 1:
                 result = end_game(score, right_score, wrong_score)
             else:
@@ -372,7 +404,7 @@ def main():
             pass
 
         pygame.display.update()
-        pygame.time.Clock().tick(60)
+        pygame.time.Clock().tick(30)
 
 
 if __name__ == '__main__':
