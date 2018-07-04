@@ -99,7 +99,7 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
     level_answer = level['answers']
     level_correct = int(level['correct'])
 
-    mouseCursor = pygame.image.load('img/cursor.png').convert_alpha()
+    mouseCursor = pygame.image.load('img/cursor.png').convert_alpha()  # 载入鼠标的图片
 
     while True:
 
@@ -169,7 +169,6 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
             pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
-                    pygame.time.wait(1000)  # 等待一秒，防止点击太快变成连下一题也点了
                     if level_correct == 1:
                         return 'yes'
                     else:
@@ -180,7 +179,6 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
             pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
-                    pygame.time.wait(1000)  # 等待一秒，防止点击太快变成连下一题也点了
                     if level_correct == 2:
                         return 'yes'
                     else:
@@ -191,7 +189,6 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
             pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
-                    pygame.time.wait(1000)  # 等待一秒，防止点击太快变成连下一题也点了
                     if level_correct == 3:
                         return 'yes'
                     else:
@@ -202,7 +199,6 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
             pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
-                    pygame.time.wait(1000)  # 等待一秒，防止点击太快变成连下一题也点了
                     if level_correct == 4:
                         return 'yes'
                     else:
@@ -227,7 +223,7 @@ def end_game(score, right_score, wrong_score):
     score_rect.centerx = SUBFACE.get_rect().centerx
 
     total_right_percent = right_score / (right_score + wrong_score)
-    right_img = globalFont.render('正确率： ' + str(total_right_percent*100) + ' %', True, color_dict['orange'])
+    right_img = globalFont.render('正确率： ' + str(total_right_percent * 100) + ' %', True, color_dict['orange'])
     right_rect = right_img.get_rect()
     right_rect.top = 200
     right_rect.centerx = SUBFACE.get_rect().centerx
@@ -241,7 +237,7 @@ def end_game(score, right_score, wrong_score):
     bg_rect = bg_img.get_rect()
     bg_rect.center = SUBFACE.get_rect().center
 
-    tip_img = globalFont.render('按 Enter 返回标题界面；按 ESC 退出游戏',True,color_dict['red'])
+    tip_img = globalFont.render('按 Enter 返回标题界面；按 ESC 退出游戏', True, color_dict['red'])
     tip_rect = tip_img.get_rect()
     tip_rect.centerx = SUBFACE.get_rect().centerx
     tip_rect.bottom = 540
@@ -253,7 +249,7 @@ def end_game(score, right_score, wrong_score):
     while True:
         SUBFACE.blit(bg_img, bg_rect)
         pygame.draw.rect(SUBFACE, color_dict['white'], bg_fill)
-        pygame.draw.rect(SUBFACE, color_dict['red'], bg_fill, 4)
+        pygame.draw.rect(SUBFACE, color_dict['gold'], bg_fill, 4)
         SUBFACE.blit(score_img, score_rect)
         SUBFACE.blit(right_score_img, right_score_rect)
         SUBFACE.blit(right_img, right_rect)
@@ -267,7 +263,7 @@ def end_game(score, right_score, wrong_score):
                     close_program()
                 elif event.key == K_RETURN:
                     return 'reset'
-
+        pygame.mouse.set_visible(True)
         pygame.display.update()
         pygame.time.Clock().tick(30)
 
@@ -279,8 +275,6 @@ def about_this():
     guiDesing = 'SeanCheng'
     copyRight = 'CopyRight © SeanCheng'
 
-
-
     while True:
         SUBFACE.fill(color_dict['black'])
 
@@ -291,8 +285,9 @@ def about_this():
                 if event.key == K_ESCAPE:
                     close_program()
                 elif event.key == K_RETURN:
-
                     return 'reset'
+
+        pygame.mouse.set_visible(True)
 
         pygame.display.update()
         pygame.time.Clock().tick(30)
@@ -328,26 +323,25 @@ def load_file(filename):
         q_list['correct'] = correct
         game_level.append(q_list)
 
-
-    # 生产随机指定数量的题集
+    # 生产随机指定数量的题集，利用set的去重特性，这样当set的长度是10时，就是10个不重复的数字
     tmp_level = set()
     while len(tmp_level) < 10:
-        randNum = random.randint(0, len(game_level)-1)
+        randNum = random.randint(0, len(game_level) - 1)
         tmp_level.add(randNum)
 
     new_question = []
     for i in tmp_level:
         new_question.append(game_level[i])
 
-    # 因为set的缘故，提取出来的题目是安装顺序排列的，需要在打乱一次
+    # 因为set的缘故，提取出来的题目是按顺序排列的，需要打乱一次,形成每次游戏时的题目顺序的独特随机性
     random.shuffle(new_question)
 
     return new_question
 
 
 def main():
-    # 全局话声明
-    global SUBFACE, titleFont, globalFont, helpFont, color_dict, game_level, questionFont, answerFont, score, right_score, wrong_score
+    # 全局化声明
+    global SUBFACE, titleFont, globalFont, helpFont, color_dict, questionFont, answerFont, game_level
 
     # 颜色字典
     color_dict = {'red': (255, 0, 0),  # 纯红
@@ -360,7 +354,7 @@ def main():
                   'white': (255, 255, 255),  # 纯白
                   }
 
-    game_level = load_file("data.xml")
+    # game_level = load_file("data.xml")
 
     # 初始化
     pygame.init()
@@ -373,21 +367,24 @@ def main():
     questionFont = pygame.font.Font('font/HuaKanSong.ttf', 24)
     answerFont = pygame.font.Font('font/HuaKanSong.ttf', 22)
     helpFont = pygame.font.Font('font/HuaKanSong.ttf', 24)
-    result = game_title()
+
+    result = game_title()  # 游戏从初始的标题开始。所以这个直接载入，不需要添加到循环中去。
     corrent = 0
     score = 0
     right_score = 0
     wrong_score = 0
     while True:
         if 'reset' in result:
-            game_level = load_file("data.xml")
-            corrent = 0
+            # 返回到游戏标题界面
             result = game_title()
         elif 'start' in result:
+            game_level = load_file("data.xml")  # 在点开始游戏的时候载入10道题
+            pygame.time.wait(1500)  # 和答题同理
             result = load_game(corrent, score, right_score, wrong_score)
         elif 'about' in result:
-            about_this()
+            result = about_this()
         elif result in ('next', 'yes', 'no'):
+            pygame.time.wait(1500)  # 答题完成后，给定一个等待时间，有效防止题目下一题刷出来还没有看就点中了答案
             if result in 'yes':
                 score += 100
                 right_score += 1
