@@ -237,14 +237,23 @@ def end_game(score, right_score, wrong_score):
     bg_rect = bg_img.get_rect()
     bg_rect.center = SURFACE.get_rect().center
 
-    tip_img = globalFont.render('按 Enter 返回标题界面；按 ESC 退出游戏', True, color_dict['red'])
-    tip_rect = tip_img.get_rect()
-    tip_rect.centerx = SURFACE.get_rect().centerx
-    tip_rect.bottom = 540
-
     bg_fill = pygame.Rect((0, 0), (400, 300))
     bg_fill.centerx = SURFACE.get_rect().centerx
     bg_fill.top = 80
+
+    bt_back = pygame.Rect((0, 0), (180, 60))
+    bt_back.centerx = SURFACE.get_rect().centerx - 120
+    bt_back.bottom = 580
+    back_img = globalFont.render('返回标题', True, color_dict['white'])
+    back_rect = back_img.get_rect()
+    back_rect.center = bt_back.center
+
+    bt_exit = pygame.Rect((0, 0), (180, 60))
+    bt_exit.centerx = SURFACE.get_rect().centerx + 120
+    bt_exit.bottom = 580
+    exit_img = globalFont.render('退出游戏', True, color_dict['white'])
+    exit_rect = exit_img.get_rect()
+    exit_rect.center = bt_exit.center
 
     while True:
         SURFACE.blit(bg_img, bg_rect)
@@ -253,7 +262,9 @@ def end_game(score, right_score, wrong_score):
         SURFACE.blit(score_img, score_rect)
         SURFACE.blit(right_score_img, right_score_rect)
         SURFACE.blit(right_img, right_rect)
-        SURFACE.blit(tip_img, tip_rect)
+
+        pygame.draw.rect(SURFACE, color_dict['orange'], bt_back)
+        pygame.draw.rect(SURFACE, color_dict['orange'], bt_exit)
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -264,6 +275,25 @@ def end_game(score, right_score, wrong_score):
                 elif event.key == K_RETURN:
                     return 'reset'
         pygame.mouse.set_visible(True)
+
+        x,y = pygame.mouse.get_pos()
+        pressed = pygame.mouse.get_pressed()
+
+        if bt_back.left < x < bt_back.right and bt_back.top < y < bt_back.bottom:
+            pygame.draw.rect(SURFACE, color_dict['lime'], bt_back)
+            for event in pressed:
+                if event == 1:
+                    return 'reset'
+
+        if bt_exit.left < x < bt_exit.right and bt_exit.top < y < bt_exit.bottom:
+            pygame.draw.rect(SURFACE, color_dict['lime'], bt_exit)
+            for event in pressed:
+                if event == 1:
+                    close_program()
+
+        SURFACE.blit(back_img, back_rect)
+        SURFACE.blit(exit_img, exit_rect)
+
         pygame.display.update()
         pygame.time.Clock().tick(30)
 
@@ -281,6 +311,14 @@ def about_this():
 
     bg = pygame.image.load('img/about.png')
 
+    bt_back = pygame.Rect((0, 0), (180, 60))
+    bt_back.left = 300
+    bt_back.bottom = 580
+
+    back_img = globalFont.render('返  回', True, color_dict['white'])
+    back_rect = back_img.get_rect()
+    back_rect.center = bt_back.center
+
     while True:
         SURFACE.fill(color_dict['black'])
         SURFACE.blit(bg, (0, 0))
@@ -293,6 +331,8 @@ def about_this():
 
             SURFACE.blit(font_img, font_rect)
 
+        pygame.draw.rect(SURFACE, color_dict['lime'], bt_back)
+
         for event in pygame.event.get():
             if event.type == QUIT:
                 close_program()
@@ -303,6 +343,17 @@ def about_this():
                     return 'reset'
 
         pygame.mouse.set_visible(True)
+
+        x,y = pygame.mouse.get_pos()
+        pressed = pygame.mouse.get_pressed()
+
+        if bt_back.left < x <bt_back.right and bt_back.top < y < bt_back.bottom:
+            pygame.draw.rect(SURFACE, color_dict['orange'], bt_back)
+            for event in pressed:
+                if event == 1:
+                    return 'reset'
+
+        SURFACE.blit(back_img, back_rect)
 
         pygame.display.update()
         pygame.time.Clock().tick(30)
@@ -394,12 +445,13 @@ def main():
             result = game_title()
         elif 'start' in result:
             game_level = load_file("data.xml")  # 在点开始游戏的时候载入10道题
-            pygame.time.wait(1500)  # 和答题同理
+            pygame.time.wait(1000)  # 和答题同理
+            corrent = 0
             result = load_game(corrent, score, right_score, wrong_score)
         elif 'about' in result:
             result = about_this()
         elif result in ('next', 'yes', 'no'):
-            pygame.time.wait(1500)  # 答题完成后，给定一个等待时间，有效防止题目下一题刷出来还没有看就点中了答案
+            pygame.time.wait(1000)  # 答题完成后，给定一个等待时间，有效防止题目下一题刷出来还没有看就点中了答案
             if result in 'yes':
                 score += 100
                 right_score += 1
