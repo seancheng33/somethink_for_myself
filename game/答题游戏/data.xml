@@ -36,79 +36,6 @@
         </answer>
         <correct>3</correct>
     </question>
-    <question title="零时到八九点钟，有许多称谓，如：凌晨、黎明、清晨、早晨等，你知道凌晨是哪一段时间？">
-        <answer>
-            <a>零时至六时</a>
-            <b>参时到六时</b>
-            <c>天快亮时</c>
-            <d>天刚亮时</d>
-        </answer>
-        <correct>1</correct>
-    </question>
-    <question title="世界地球日是每年的哪一天？">
-        <answer>
-            <a>4月22日</a>
-            <b>12月1日</b>
-            <c>3月12日</c>
-            <d>5月1日</d>
-        </answer>
-        <correct>1</correct>
-    </question>
-    <question title="我国现有文献中最早引用勾股定理的是？">
-        <answer>
-            <a>《九章算术》</a>
-            <b>《周髀算经》</b>
-            <c>《纵横图》</c>
-            <d>《孙子算经》</d>
-        </answer>
-        <correct>2</correct>
-    </question>
-    <question title="由于外力的变化，物体的加速度逐渐减小，在其加速度变为零之前">
-        <answer>
-            <a>物体速度逐渐变慢，接近停止</a>
-            <b>物体保持匀速运动</b>
-            <c>物体速度匀速加快</c>
-            <d>物体速度越来越快，但变化速度减慢</d>
-        </answer>
-        <correct>4</correct>
-    </question>
-    <question title="新疆哈密瓜之甜已名闻全国。导致哈密瓜甜度如此之高的原因是">
-        <answer>
-            <a>新疆地区日照时间长，昼夜温差大，雨水不充足</a>
-            <b>哈密瓜品种好</b>
-            <c>新疆气候温暖宜人</c>
-            <d>过于夸大了</d>
-        </answer>
-        <correct>1</correct>
-    </question>
-    <question title="标志着北宋诗文革新运动最高成就的作家是">
-        <answer>
-            <a>王安石</a>
-            <b>苏轼</b>
-            <c>范仲淹</c>
-            <d>欧阳修</d>
-        </answer>
-        <correct>2</correct>
-    </question>
-    <question title="世界上最大的古代土石建筑工程是哪一个？">
-        <answer>
-            <a>中国的万里长城</a>
-            <b>埃及的金字塔</b>
-            <c>古罗马的斗兽场</c>
-            <d>中国的故宫</d>
-        </answer>
-        <correct>1</correct>
-    </question>
-    <question title="以下哪项是建设有中国特色的社会主义理论的精髓？">
-        <answer>
-            <a>一国两制</a>
-            <b>以经济建设为中心</b>
-            <c>坚持四项基本原则，坚持改革开放</c>
-            <d>解决思想，实事求是</d>
-        </answer>
-        <correct>4</correct>
-    </question>
-
     <question title="以下哪个是不合法的布尔表达式？">
         <answer>
             <a>x in range(6)</a>
@@ -129,7 +56,7 @@
     </question>
     <question title="以下不能创建一个字典的词句是？">
         <answer>
-            <a>dic1 = {}(</a>
+            <a>dic1 = {}</a>
             <b>dic2 = {123:345}</b>
             <c>dic3 = {[1,2,3]:'uestc'}</c>
             <d>dic4 = {(1,2,3):'uestc'}</d>
