@@ -371,7 +371,7 @@ def about_this():
 
         pygame.mouse.set_visible(True)
 
-        x,y = pygame.mouse.get_pos()
+        x, y = pygame.mouse.get_pos()
         pressed = pygame.mouse.get_pressed()
 
         if bt_back.left < x < bt_back.right and bt_back.top < y < bt_back.bottom:
