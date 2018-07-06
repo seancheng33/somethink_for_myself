@@ -21,6 +21,7 @@ def game_title():
     title_image = titleFont.render(title_text, True, color_dict['green'])
     title_time = 0
     mouseCursor = pygame.image.load('img/cursor.png').convert_alpha()  # 加载鼠标图片
+
     while True:
         SURFACE.blit(title_bg, (0, 0))
         if title_time == 0:
@@ -66,7 +67,6 @@ def game_title():
         if tips_rect.left < x < tips_rect.right and tips_rect.top < y < tips_rect.bottom:
             tips_image = globalFont.render(bt_start_text, True, color_dict['red'])
             SURFACE.blit(tips_image, tips_rect)
-
             for event in pressed_array:
                 if event == 1:  # 1为鼠标左键点击事件
                     return 'start'
@@ -90,14 +90,28 @@ def game_title():
         pygame.time.Clock().tick(20)
 
 
-def load_game(levels, total_score, total_right_score, total_wrong_score):
+def load_game(gameLevels,current, total_score, total_right_score, total_wrong_score):
     SURFACE.fill(color_dict['black'])
     title_bg = pygame.image.load('img/title.jpg')
 
-    level = game_level[levels]
+    level = gameLevels[current]
     level_question = level['question']
     level_answer = level['answers']
     level_correct = int(level['correct'])
+
+    bt_replay = pygame.Rect((0, 0), (220, 50))
+    bt_replay.left = 730
+    bt_replay.top = 400
+    replay_img = globalFont.render('重新开始', True, color_dict['white'])
+    replay_rect = replay_img.get_rect()
+    replay_rect.center = bt_replay.center
+
+    bt_exit = pygame.Rect((0, 0), (220, 50))
+    bt_exit.left = 730
+    bt_exit.top = 480
+    exit_img = globalFont.render('结束游戏', True, color_dict['white'])
+    exit_rect = exit_img.get_rect()
+    exit_rect.center = bt_exit.center
 
     mouseCursor = pygame.image.load('img/cursor.png').convert_alpha()  # 载入鼠标的图片
 
@@ -113,7 +127,7 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
             SURFACE.blit(question_image, (50, 80 + (i * 30)))
 
         # 右侧的内容
-        level_image = helpFont.render('当前题目：第 ' + str(levels + 1) + ' 题', True, color_dict['orange'])
+        level_image = helpFont.render('当前题目：第 ' + str(current + 1) + ' 题', True, color_dict['orange'])
         SURFACE.blit(level_image, (725, 80))
         score_image = helpFont.render('当前分数：' + str(total_score), True, color_dict['orange'])
         SURFACE.blit(score_image, (725, 120))
@@ -145,6 +159,9 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
         SURFACE.blit(item3_image, item3_rect)
         SURFACE.blit(item4_image, item4_rect)
 
+        pygame.draw.rect(SURFACE, color_dict['lime'], bt_replay)
+        pygame.draw.rect(SURFACE, color_dict['lime'], bt_exit)
+
         for event in pygame.event.get():
             # 关闭按钮的事件
             if event.type == QUIT:
@@ -153,20 +170,20 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
                 # 按键按下后抬起的事件判断
                 if event.key == K_ESCAPE:
                     close_program()
-                elif event.key == K_BACKSPACE:
-                    # 按回退键，返回到标题界面。
-                    return 'reset'
-                elif event.key == K_RETURN:
-                    # 按回车键，跳到下一题。
-                    return 'next'
+                # elif event.key == K_BACKSPACE:
+                #     # 按回退键，返回到标题界面。
+                #     return 'reset'
+                # elif event.key == K_RETURN:
+                #     # 按回车键，跳到下一题。
+                #     return 'next'
 
         # 鼠标控制事件
         x, y = pygame.mouse.get_pos()
+        pressed = pygame.mouse.get_pressed()
         # 四个答案区域的内容的鼠标鼠标时间控制
         if item1_rect.left < x < item1_rect.right and item1_rect.top < y < item1_rect.bottom:
             item1_image = answerFont.render('1 - ' + level_answer[0], True, color_dict['gold'])
             SURFACE.blit(item1_image, item1_rect)
-            pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
                     if level_correct == 1:
@@ -176,7 +193,6 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
         if item2_rect.left < x < item2_rect.right and item2_rect.top < y < item2_rect.bottom:
             item2_image = answerFont.render('2 - ' + level_answer[1], True, color_dict['gold'])
             SURFACE.blit(item2_image, item2_rect)
-            pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
                     if level_correct == 2:
@@ -186,7 +202,6 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
         if item3_rect.left < x < item3_rect.right and item3_rect.top < y < item3_rect.bottom:
             item3_image = answerFont.render('3 - ' + level_answer[2], True, color_dict['gold'])
             SURFACE.blit(item3_image, item3_rect)
-            pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
                     if level_correct == 3:
@@ -196,7 +211,6 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
         if item4_rect.left < x < item4_rect.right and item4_rect.top < y < item4_rect.bottom:
             item4_image = answerFont.render('4 - ' + level_answer[3], True, color_dict['gold'])
             SURFACE.blit(item4_image, item4_rect)
-            pressed = pygame.mouse.get_pressed()
             for event in pressed:
                 if event == 1:
                     if level_correct == 4:
@@ -204,6 +218,19 @@ def load_game(levels, total_score, total_right_score, total_wrong_score):
                     else:
                         return 'no'
         # 右侧按键的鼠标事件
+        if bt_replay.left < x < bt_replay.right and bt_replay.top < y < bt_replay.bottom:
+            pygame.draw.rect(SURFACE, color_dict['orange'], bt_replay)
+            for event in pressed:
+                if event == 1:
+                    return 'reset'
+        if bt_exit.left < x < bt_exit.right and bt_exit.top < y < bt_exit.bottom:
+            pygame.draw.rect(SURFACE, color_dict['orange'], bt_exit)
+            for event in pressed:
+                if event == 1:
+                    close_program()
+
+        SURFACE.blit(replay_img, replay_rect)
+        SURFACE.blit(exit_img, exit_rect)
 
         # 自定义鼠标样式
         pygame.mouse.set_visible(False)
@@ -222,7 +249,7 @@ def end_game(score, right_score, wrong_score):
     score_rect.top = 150
     score_rect.centerx = SURFACE.get_rect().centerx
 
-    total_right_percent = right_score / totelNum
+    total_right_percent = right_score / totalNum
     right_img = globalFont.render('正确率： ' + str(total_right_percent * 100) + ' %', True, color_dict['orange'])
     right_rect = right_img.get_rect()
     right_rect.top = 200
@@ -276,7 +303,7 @@ def end_game(score, right_score, wrong_score):
                     return 'reset'
         pygame.mouse.set_visible(True)
 
-        x,y = pygame.mouse.get_pos()
+        x, y = pygame.mouse.get_pos()
         pressed = pygame.mouse.get_pressed()
 
         if bt_back.left < x < bt_back.right and bt_back.top < y < bt_back.bottom:
@@ -300,9 +327,9 @@ def end_game(score, right_score, wrong_score):
 
 def about_this():
     productName = '游戏名称：大脑很囧'
-    programBy = '程序设计：SeanCheng'
-    guiDesing = 'UI设计：SeanCheng'
-    copyRight = 'CopyRight © SeanCheng'
+    programBy = '程序设计：Sean Cheng'
+    guiDesing = 'UI设计：Sean Cheng'
+    copyRight = 'CopyRight © Sean Cheng'
 
     aboutText = [productName, programBy, guiDesing, copyRight, '',
                  '本游戏使用python+pygame制作。', '此游戏算是本人的一个pygame的练习制作，仅凭个人爱好制作，精力有限。',
@@ -347,7 +374,7 @@ def about_this():
         x,y = pygame.mouse.get_pos()
         pressed = pygame.mouse.get_pressed()
 
-        if bt_back.left < x <bt_back.right and bt_back.top < y < bt_back.bottom:
+        if bt_back.left < x < bt_back.right and bt_back.top < y < bt_back.bottom:
             pygame.draw.rect(SURFACE, color_dict['orange'], bt_back)
             for event in pressed:
                 if event == 1:
@@ -391,9 +418,9 @@ def load_file(filename):
 
     # 生产随机指定数量的题集，利用set的去重特性，这样当set的长度是10时，就是10个不重复的数字
     tmp_level = set()
-    while len(tmp_level) < totelNum:
-        randNum = random.randint(0, len(game_level) - 1)  # 生产随机数
-        tmp_level.add(randNum)
+    while len(tmp_level) < totalNum:
+        randomNum = random.randint(0, len(game_level) - 1)  # 生产随机数
+        tmp_level.add(randomNum)
 
     new_question = []
     for i in tmp_level:
@@ -407,7 +434,7 @@ def load_file(filename):
 
 def main():
     # 全局化声明
-    global SURFACE, titleFont, globalFont, helpFont, color_dict, questionFont, answerFont, game_level, aboutFont, totelNum
+    global SURFACE, titleFont, globalFont, helpFont, color_dict, questionFont, answerFont, aboutFont, totalNum
 
     # 颜色字典
     color_dict = {'red': (255, 0, 0),  # 纯红
@@ -434,7 +461,7 @@ def main():
     helpFont = pygame.font.Font('font/HuaKanSong.ttf', 24)
 
     result = game_title()  # 游戏从初始的标题开始。所以这个直接载入，不需要添加到循环中去。
-    totelNum = 8
+    totalNum = 8
     corrent = 0
     score = 0
     right_score = 0
@@ -444,10 +471,10 @@ def main():
             # 返回到游戏标题界面
             result = game_title()
         elif 'start' in result:
-            game_level = load_file("data.xml")  # 在点开始游戏的时候载入10道题
+            gameLevels = load_file("data.xml")  # 在点开始游戏的时候载入10道题
             pygame.time.wait(1000)  # 和答题同理
             corrent = 0
-            result = load_game(corrent, score, right_score, wrong_score)
+            result = load_game(gameLevels, corrent, score, right_score, wrong_score)
         elif 'about' in result:
             result = about_this()
         elif result in ('next', 'yes', 'no'):
@@ -459,11 +486,11 @@ def main():
                 wrong_score += 1
 
             # 先计分，否则最后的统计会因为少统计了一条而出错
-            if corrent == len(game_level) - 1:
+            if corrent == len(gameLevels) - 1:
                 result = end_game(score, right_score, wrong_score)
             else:
                 corrent += 1
-                result = load_game(corrent, score, right_score, wrong_score)
+                result = load_game(gameLevels, corrent, score, right_score, wrong_score)
         else:
             pass
 
