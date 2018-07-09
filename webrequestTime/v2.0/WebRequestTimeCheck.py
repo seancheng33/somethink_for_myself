@@ -81,13 +81,12 @@ def login_cookies(driver, name, url, config):
             driver.find_element_by_xpath('//*[@id="_customlogin_WAR_customloginportlet_ldap-login-btn"]').click()
 
     driver.get(url)
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(5)
     driver.save_screenshot(name + '.png')  # 截图查看是否为正确的页面
 
     cookies = {}
     for item in driver.get_cookies():
         cookies[item['name']] = item['value']
-    # print(cookies)
     return cookies
 
 
@@ -95,13 +94,15 @@ def check_web(name, target_url, cookies):
     webpage = requests.get(url=target_url, cookies=cookies)
     if webpage.status_code == 200:
         request_time = webpage.elapsed.total_seconds()  # 获取打开页面的总秒数
-        print('站点名称:' + name, '响应时间： ' + str(request_time), '秒')
+        status_txt = '站点名称:' + name + '响应时间： ' + str(request_time) + '秒'
+        print(status_txt)
+        return status_txt
     else:
-        print('站点名称:' + name, '访问异常，状态码：' + str(webpage.status_code))
+        status_txt = '站点名称:' + name + '访问异常，状态码：' + str(webpage.status_code)
+        print(status_txt)
+        return status_txt
 
-
-if __name__ == '__main__':
-
+def main():
     config = configparser.ConfigParser()
     config_file = open('config.ini', 'r', encoding='utf-8')
     config.read_file(config_file)
@@ -109,8 +110,9 @@ if __name__ == '__main__':
     cap = webdriver.DesiredCapabilities.PHANTOMJS
     cap["phantomjs.page.settings.resourceTimeout"] = 100
     cap["phantomjs.page.settings.userAgent"] = (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36")
     driver = webdriver.PhantomJS(executable_path=os.path.abspath('phantomjs.exe'), desired_capabilities=cap)
+    # driver = webdriver.Chrome(executable_path=os.path.abspath('chromedriver.exe'))
     driver.set_window_size(1366, 768)
 
     web_dict = {
@@ -135,14 +137,28 @@ if __name__ == '__main__':
         '促销工具箱': config.get('website', 'cuxiao')
     }
 
+    status_list = []
     for key in web_dict:
         urlname = key
         url = web_dict[key]
         cookies = login_cookies(driver, urlname, url, config)
-        check_web(urlname, url, cookies)
+        status_txt = check_web(urlname, url, cookies)
+        status_list.append(status_txt)
         # 每访问一个站点睡眠3秒
         time.sleep(3)
 
     driver.quit()
 
-    input('按Enter键退出')
+    nowTime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+    with open(os.path.abspath('status.txt'), 'a', encoding='utf-8') as file:
+        file.write('采集时间：' + nowTime + '\n')
+        for line in status_list:
+            file.write(line)
+            file.write('\n')
+        file.write('=' * 40 + '\n')
+
+
+if __name__ == '__main__':
+    main()
+
+    # input('按Enter键退出')
