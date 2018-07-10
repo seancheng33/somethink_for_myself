@@ -108,4 +108,49 @@
         </answer>
         <correct>2</correct>
     </question>
+    <question title="下列哪种类型是Python的映射类型？">
+        <answer>
+            <a>str</a>
+            <b>list</b>
+            <c>tuple</c>
+            <d>dict</d>
+        </answer>
+        <correct>4</correct>
+    </question>
+    <question title="下列哪种不是Python元组的定义方式？">
+        <answer>
+            <a>(1)</a>
+            <b>(1, )</b>
+            <c>(1, 2)</c>
+            <d>(1, 2, (3, 4))</d>
+        </answer>
+        <correct>1</correct>
+    </question>
+    <question title="下述字符串格式化语法正确的是？">
+        <answer>
+            <a>'GNU's Not %d %%'  % 'UNIX'</a>
+            <b>'GNU\'s Not %d %%'  % 'UNIX'</b>
+            <c>'GNU's Not %s %%'  % 'UNIX'</c>
+            <d>'GNU\'s Not %s %%'  % 'UNIX'</d>
+        </answer>
+        <correct>4</correct>
+    </question>
+    <question title="下列对协程的理解错误的是？">
+        <answer>
+            <a>一个线程可以运行多个协程</a>
+            <b>协程的调度由所在程序自身控制</b>
+            <c>Linux中线程的调度由操作系统控制</c>
+            <d>Linux中协程的调度由操作系统控制</d>
+        </answer>
+        <correct>4</correct>
+    </question>
+    <question title="下列哪种函式参数定义不合法?">
+        <answer>
+            <a>def myfunc(*args):</a>
+            <b>def myfunc(arg1=1):</b>
+            <c>def myfunc(*args, a=1):</c>
+            <d>def myfunc(a=1, **args):</d>
+        </answer>
+        <correct>3</correct>
+    </question>
 </collection>
