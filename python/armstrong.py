@@ -20,4 +20,4 @@ def number(start, end):
 
 
 if __name__ == '__main__':
-    number(1, 10000)
+    number(1, 1000)
