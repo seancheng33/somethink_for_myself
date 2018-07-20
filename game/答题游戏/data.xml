@@ -153,4 +153,85 @@
         </answer>
         <correct>3</correct>
     </question>
+    <question title="执行以下命令，int('3.14') 得到的答案是什么？">
+        <answer>
+            <a>3</a>
+            <b>3.14</b>
+            <c>ValueError</c>
+            <d>'3.14'</d>
+        </answer>
+        <correct>3</correct>
+    </question>
+    <question title="关于集合数据结构，下面描述正确的是">
+        <answer>
+            <a>支持对键进行排序操作</a>
+            <b>键是无序的</b>
+            <c>键查找的时间复杂度为O(n)</c>
+            <d>键可以是任意类型</d>
+        </answer>
+        <correct>2</correct>
+    </question>
+    <question title="关于赋值语句的作用，正确的描述是">
+        <answer>
+            <a>将变量改写为新的值</a>
+            <b>将变量绑定到对象</b>
+            <c>每个赋值语句只能给一个变量赋值</c>
+            <d>变量和对象必须类型相同</d>
+        </answer>
+        <correct>2</correct>
+    </question>
+    <question title="关于列表数据结构，下面描述正确的是">
+        <answer>
+            <a>不支持 in 运算符</a>
+            <b>所有元素类型必须相同</b>
+            <c>必须按顺序插入元素</c>
+            <d>可以不按顺序查找元素</d>
+        </answer>
+        <correct>4</correct>
+    </question>
+    <question title="与x > y and y > z 语句等价的是">
+        <answer>
+            <a>x ＞ y ＜ z</a>
+            <b>not x ＜ y or y ＜ z</b>
+            <c>x ＞ y or not y ＜ z</c>
+            <d>not x ＜ y or not y ＜ z </d>
+        </answer>
+        <correct>1</correct>
+    </question>
+    <question title="以下哪条语句定义了一个Python字典">
+        <answer>
+            <a>{1, 2, 3}</a>
+            <b>{ }</b>
+            <c>[1, 2, 3]</c>
+            <d>(1, 2, 3)</d>
+        </answer>
+        <correct>2</correct>
+    </question>
+    <question title="关于递归的说法正确的是：">
+        <answer>
+            <a>在能够使用递归函数的时候，尽量使用递归，因为它可以使得程序变得简洁，易于理解</a>
+            <b>递归函数的执行效率优于非递归函数</b>
+            <c>递归编写的程序代码通常比非递归的少，所以递归就是比非递归好</c>
+            <d>递归是一种程序调用自身的现象</d>
+        </answer>
+        <correct>4</correct>
+    </question>
+    <question title="下列运算符的使用错误的是：">
+        <answer>
+            <a>-10 % -3</a>
+            <b>1 + 'a'</b>
+            <c>[1, 2, 3] + [4, 5, 6]</c>
+            <d>3 * 'abc'</d>
+        </answer>
+        <correct>2</correct>
+    </question>
+    <question title="关于函数的下列说法不正确的是：">
+        <answer>
+            <a>函数都有返回值</a>
+            <b>函数可以有多个返回值</b>
+            <c>函数可以没有return语句</c>
+            <d>函数可以没有参数</d>
+        </answer>
+        <correct>2</correct>
+    </question>
 </collection>
