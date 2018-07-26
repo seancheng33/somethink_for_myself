@@ -2,7 +2,7 @@
 @Author       : sean cheng
 @Email        : aya234@163.com
 @CreateTime   : 2018/7/24
-@Program      : simon游戏的模仿
+@Program      : 根据书本的练习，simon游戏的模仿，具体是怎么玩的，规则还没有弄清楚
 '''
 
 import sys
