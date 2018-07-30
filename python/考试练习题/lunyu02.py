@@ -1,7 +1,7 @@
 '''
 @Author       : sean cheng
 @Email        : aya234@163.com
-@CreateTime   : 2018/7/17
+@CreateTime   : 2018/7/30
 @Program      : （考试练习题）去掉每行文字中所有的括号以及内部数字。
 '''
 

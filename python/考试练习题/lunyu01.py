@@ -1,7 +1,7 @@
 '''
 @Author       : sean cheng
 @Email        : aya234@163.com
-@CreateTime   : 2018/7/17
+@CreateTime   : 2018/7/26
 @Program      : （考试练习题）给定一个文档，然后按要求处理，只需要原文里面的内容，
                 其他的内容不需要，去掉原文里面开头的数字章节序号，保存至新文件
 '''
