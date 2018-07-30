@@ -22,4 +22,7 @@ for i in txt:
 
 with open('天龙八部-汉字统计.txt','w',encoding='utf-8') as outFile:
     for item in dataDict.items():
-        outFile.write("{}:{},".format(item[0],item[1]))
+        tmpList = []
+        for item in dataDict.items():
+            tmpList.append("{}:{}".format(item[0],item[1]))
+    outFile.write(','.join(tmpList))

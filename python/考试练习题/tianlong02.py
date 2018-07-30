@@ -23,5 +23,7 @@ for i in words:
         dataDict[i] = 1
 
 with open('天龙八部-词语统计.txt','w',encoding='utf-8') as outFile:
+    tmpList = []
     for item in dataDict.items():
-        outFile.write("{}:{},".format(item[0],item[1]))
+        tmpList.append("{}:{}".format(item[0],item[1]))
+    outFile.write(','.join(tmpList))
