@@ -11,7 +11,15 @@ pw = []
 
 pw_num = input('输入一个数字作为密码的长度：')
 
-for i in range(int(pw_num)):
-    pw.append(random.choice(seed))
+# 方法一
+#
+# for i in range(int(pw_num)):
+#     pw.append(random.choice(seed))
+#
+# print(''.join(pw))
 
+
+# 方法二
+
+pw = random.sample(seed,int(pw_num))
 print(''.join(pw))
