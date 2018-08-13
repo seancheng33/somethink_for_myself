@@ -10,7 +10,8 @@ from GlobalSetting import GlobalSetting
 
 setting = GlobalSetting()
 
-def draw_map(mapObj,gameStateObj):
+
+def draw_map(mapObj, gameStateObj):
     # 绘制整个地图
     mapWidth = len(mapObj[0]) * setting.TILESIZE
     mapHeight = len(mapObj) * setting.TILESIZE
@@ -26,8 +27,8 @@ def draw_map(mapObj,gameStateObj):
     role_rect = pygame.Rect(x * setting.TILESIZE, y * setting.TILESIZE, setting.TILESIZE, setting.TILESIZE)
     mapSurface.blit(role, role_rect)
 
-
     return mapSurface
+
 
 def redraw_map(mapObj, gameStateObj):
     # 这段重绘地图的概念是，获取角色的坐标，然后如果角色的坐标不是在正中间的话，计算偏移值，就移动地图。
@@ -38,18 +39,16 @@ def redraw_map(mapObj, gameStateObj):
     half_x = mapwidth // 2
     half_y = mapheight // 2
 
-    if (x - half_x) >= 0 and x < setting.TILEWIDTH:
+    if half_x < x < setting.TILEWIDTH:
         offsetX = (x - half_x) * setting.TILESIZE
     else:
         offsetX = 0 * setting.TILESIZE
 
-    if (y - half_y) > 0:
-        if y < setting.TILEHEIGHT:
-            offsetY = (y - half_y) * setting.TILESIZE
-        else:
-            offsetY = (setting.TILEHEIGHT - mapheight) * setting.TILESIZE
+    if half_y < y < setting.TILEHEIGHT:
+        offsetY = (y - half_y) * setting.TILESIZE
     else:
         offsetY = 0 * setting.TILESIZE
+
 
     if mapwidth > setting.TILEWIDTH and mapheight > setting.TILEHEIGHT:
         sub_map = Rect(offsetX, offsetY, setting.SCREENWIDTH, setting.SCREENHEIGHT)
