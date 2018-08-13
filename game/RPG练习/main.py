@@ -6,138 +6,97 @@
 '''
 import pygame
 from pygame.locals import *
+
+import DrawMap
 import mapdata
 from GlobalSetting import GlobalSetting
 from sysfunction import close_program
 
 
 def startscreen():
-    title = setting.INVFONT.render('中文的标题', True, (255, 255, 255), setting.BGCOLOR)
+    setting.SCREENFACE.fill(setting.COLORDICT['bgcolor'])
+
+    title = setting.INVFONT.render('中文的标题', True, (255, 255, 255), setting.COLORDICT['bgcolor'])
     titleRect = title.get_rect()
     titleRect.top = 100
     titleRect.centerx = int(setting.SCREENWIDTH / 2)
 
-    setting.SCREENFACE.blit(title, titleRect)
+
     while True:
+        setting.SCREENFACE.blit(title, titleRect)
+        pygame.draw.rect(setting.SCREENFACE,(0,125,0),(220, 250, 120,50))
         for event in pygame.event.get():
             if event.type == QUIT:
-                close_program()
+                return 'exit'
             elif event.type == KEYUP:
                 if event.key == K_ESCAPE:
-                    close_program()
-                return
+                    return 'exit'
+            elif event.type == MOUSEBUTTONUP:
+                if 220 < x < 340 and 250 < y < 300:
+                    return 'startgame'
+        x, y = pygame.mouse.get_pos()
+
+        if 220 < x < 340 and 250 < y < 300:
+            pygame.draw.rect(setting.SCREENFACE, (0, 125, 125), (220, 250, 120, 50))
 
         pygame.display.update()
         setting.FPSCLOCK.tick()
-
-
-def draw_map(mapObj, gameStateObj):
-    mapWidth = len(mapObj[0]) * setting.TILESIZE
-    mapHeight = len(mapObj) * setting.TILESIZE
-    mapSurface = pygame.Surface((mapWidth, mapHeight))
-
-    rolex, roley = gameStateObj['player']
-
-    for x in range(len(mapObj)):
-        for y in range(len(mapObj[x])):
-            mapSurface.blit(setting.TILEMAPPING[mapObj[x][y]], (y * setting.TILESIZE, x * setting.TILESIZE))
-
-    role = pygame.image.load('img/horngirl.png')
-    role_rect = pygame.Rect(rolex * setting.TILESIZE, roley * setting.TILESIZE, setting.TILESIZE, setting.TILESIZE)
-
-    mapSurface.blit(role, role_rect)
-
-    return mapSurface
-
-
-def show_menu():
-    while True:
-        pygame.draw.rect(setting.SCREENFACE, (0, 255, 0), (150, 450, 100, 50))
-        pygame.display.update()
-        setting.FPSCLOCK.tick()
-
-
-def redraw_map(mapObj, gameStateObj):
-    x, y = gameStateObj['player']
-    mapwidth = mapObj.get_width() / setting.TILESIZE
-    mapheight = mapObj.get_height() / setting.TILESIZE
-
-    half_x = mapwidth / 2
-    half_y = mapheight / 2
-
-    if (x - half_x) > 0:
-        if x > (mapwidth - setting.TILEWIDTH):
-            offsetX = (mapwidth - setting.TILEWIDTH - 1) * setting.TILESIZE
-        else:
-            offsetX = (x - half_x) * setting.TILESIZE
-    else:
-        offsetX = 0 * setting.TILESIZE
-
-    if (y - half_y) > 0:
-        if y > (mapheight - setting.TILEHEIGHT):
-            offsetY = (mapheight - setting.TILEHEIGHT - 1) * setting.TILESIZE
-        else:
-            offsetY = (y - half_y) * setting.TILESIZE
-    else:
-        offsetY = 0 * setting.TILESIZE
-
-    if mapwidth > setting.TILEWIDTH and mapheight > setting.TILEHEIGHT:
-        sub_map = Rect(offsetX, offsetY, setting.SCREENWIDTH, setting.SCREENHEIGHT)
-        mapSurface = mapObj.subsurface(sub_map)
-        return mapSurface
-
-    return mapObj
 
 
 def run_map(mapList, gameStateObj):
     global currentMapName
 
     currentMapName = gameStateObj['map name']
-
     mapObj = mapList[currentMapName]
-
-    menu = False
+    showMenu = False
 
     while True:
-        setting.SCREENFACE.fill(setting.BGCOLOR)
+        setting.SCREENFACE.fill(setting.COLORDICT['bgcolor'])
 
-        map = draw_map(mapObj, gameStateObj)
+        map = DrawMap.draw_map(mapObj, gameStateObj)
         mapRect = map.get_rect()
         mapRect.left = 0
         mapRect.top = 0
-        map = redraw_map(map, gameStateObj)
+        map = DrawMap.redraw_map(map, gameStateObj)
 
         setting.SCREENFACE.blit(map, mapRect)
         x, y = gameStateObj['player']
 
+        # role = pygame.image.load('img/horngirl.png')
+        # role_rect = pygame.Rect(x * setting.TILESIZE, y * setting.TILESIZE, setting.TILESIZE, setting.TILESIZE)
+        # setting.SCREENFACE.blit(role, role_rect)
+
         for event in pygame.event.get():
             if event.type == QUIT:
-                close_program()
+                return 'exit'
             elif event.type == KEYDOWN:
                 # 控制角色的移动
                 if event.key == K_LEFT:
                     if x > 0:
                         gameStateObj['player'] = (x - 1, y)
                 elif event.key == K_RIGHT:
-                    if x < setting.TILEWIDTH:
+                    if x < len(mapObj[0])-1:
                         gameStateObj['player'] = (x + 1, y)
                 elif event.key == K_UP:
                     if y > 0:
                         gameStateObj['player'] = (x, y - 1)
                 elif event.key == K_DOWN:
-                    if y < setting.TILEHEIGHT:
+                    if y < len(mapObj)-1:
                         gameStateObj['player'] = (x, y + 1)
 
-                elif event.key == K_m:
-                    if not menu:
-                        pygame.draw.rect(setting.SCREENFACE, (0, 125, 0), (150, 450, 100, 50))
-                        menu = True
-                        return  # 这个return可以让地图静止
-                    else:
-                        menu = True
+                # elif event.key == K_m:
+                #     if not showMenu:
+                #         showMenu = True
+                #         show_menu()
+                #     else:
+                #         showMenu = False
+
+                elif event.key == K_ESCAPE:
+                    return 'exit'
+                elif event.key == K_BACKSPACE:
+                    return 'title'
 
         for item in mapdata.inter_postion[currentMapName].items():
-            # print(item[0],item[1])
             if (x, y) == item[1]:
                 currentMapName = item[0][2:]
                 gameStateObj['map name'] = currentMapName
@@ -149,7 +108,7 @@ def run_map(mapList, gameStateObj):
 
 
 def main():
-    global setting
+    global setting, mapList, gameStateObj
     setting = GlobalSetting()
 
     mapList = {'base': mapdata.mapBase, 'sea': mapdata.mapSea}
@@ -157,19 +116,20 @@ def main():
     gameStateObj = {
         'player': mapdata.role_postion['base'],
         'map name': 'base',
-
     }
 
-    setting.SCREENFACE.fill(setting.BGCOLOR)
-    # startscreen()
-    run_map(mapList, gameStateObj)
+    setting.SCREENFACE.fill(setting.COLORDICT['bgcolor'])
+    result = startscreen()
     while True:
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                close_program()
-            elif event.type == KEYUP:
-                if event.key == K_ESCAPE:
-                    close_program()
+        if result == 'exit':
+            # 收到返回的结果是exit的话，就关闭整个程序
+            close_program()
+        elif result == 'title':
+            # 收到返回的结果是title的话，就返回到title界面
+            result = startscreen()
+        elif result == 'startgame':
+            # 收到返回的结果是startgame的话，就开始新游戏
+            result = run_map(mapList, gameStateObj)
 
         pygame.display.update()
         setting.FPSCLOCK.tick()
