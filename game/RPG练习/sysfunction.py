@@ -13,3 +13,5 @@ def close_program():
     sys.exit(0)
 
 
+def system_menu():
+    pass
