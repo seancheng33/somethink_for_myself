@@ -30,4 +30,4 @@ def clerk(jobs, producer, consumer):
         c.send(data)
 
 
-clerk(3, producer, consumer)
+clerk(30, producer, consumer)
