@@ -1,3 +1,10 @@
+"""
+@Author        : sean cheng
+@Email         : aya234@163.com
+@Create_Time   : 2018/8/17 
+@Program       : 基础练习，用来计算pi的
+"""
+
 from random import random
 from math import sqrt
 from time import clock
