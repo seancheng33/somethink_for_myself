@@ -2,13 +2,15 @@
 @Author       : sean cheng
 @Email        : aya234@163.com
 @CreateTime   : 2018/8/21
-@Program      : 线性回归，
+@Program      : 回归，包括了线性回归、岭回归和多项式回归。
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import linear_model
+from sklearn.preprocessing import PolynomialFeatures
 import sklearn.metrics as ms
+
 
 filename = 'data_singlevar.txt'
 x = []
@@ -55,3 +57,22 @@ print('测试集结果的均方误差', ms.mean_squared_error(y_test, y_test_pre
 print('测试集结果的解释方差分', ms.explained_variance_score(y_test, y_test_pred))  # 这个值越高越好
 print('测试集结果的R方得分', ms.r2_score(y_test, y_test_pred))
 """是否训练集的数量越高，会不会解释方差分越高，同时均方误差越低，需要验证。"""
+
+ridge_regressor = linear_model.Ridge(alpha=0.01, fit_intercept=True, max_iter=10000)
+ridge_regressor.fit(x_train,y_train)
+y_test_pred_ridge = ridge_regressor.predict(x_test)
+print('-'*50)
+print('(岭回归)测试集结果的均方误差', ms.mean_squared_error(y_test, y_test_pred_ridge))  # 这个值越小越好
+print('(岭回归)测试集结果的解释方差分', ms.explained_variance_score(y_test, y_test_pred_ridge))  # 这个值越高越好
+print('(岭回归)测试集结果的R方得分', ms.r2_score(y_test, y_test_pred_ridge))
+
+polynomial = PolynomialFeatures(degree=3)
+x_train_trainsformed = polynomial.fit_transform(x_train)
+datapoint = [0.39, 2.78, 7.11]
+poly_datapoint = polynomial.fit_transform(datapoint)
+
+poly_linear_model = linear_model.LinearRegression()
+poly_linear_model.fit(x_train_trainsformed, y_train)
+print('_'*50)
+print('线性回归：', linear_regressor.predict(datapoint)[0])
+print('多项式回归：', poly_linear_model.predict(poly_datapoint)[0])
