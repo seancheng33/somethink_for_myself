@@ -22,5 +22,5 @@ class HelloWorld(cocos.layer.Layer):
 
 cocos.director.director.init()
 hello_layer = HelloWorld()
-main_scence = cocos.scene.Scene(hello_layer)
-cocos.director.director.run(main_scence)
+main_scene = cocos.scene.Scene(hello_layer)
+cocos.director.director.run(main_scene)
