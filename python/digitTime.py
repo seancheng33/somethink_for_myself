@@ -1,11 +1,9 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Thu Sep 13 10:55:29 2018
-
-@author: sean
+@Author        : sean cheng
+@Email         : aya234@163.com
+@Create_Time   : 2018/9/13
+@Program       : 基础练习，7段数码管绘制时间年月日
 """
-
 import turtle as t
 
 def drawline(draw):
