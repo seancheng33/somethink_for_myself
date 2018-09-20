@@ -12,6 +12,7 @@
 * 可能要重温java，并上传一些java的代码
 * 添加GUI文件夹，增加内容：python的TKinter的GUI练习。
 * Data_Analysis文件夹，用于数据统计练习，基于python的练习
+* 添加文件夹用于存放机器学习算法的练习。
 
 某些脚本，我上传到了一个 [Demo网站](http://www.demodashi.com/) 上面，并且设置了打赏的功能
 
