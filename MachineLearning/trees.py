@@ -8,11 +8,11 @@ from math import log
 def calcShannonEnt(dataSet):
     numEntries = len(dataSet)
     labelCounts = {}
-    for fearVec in dataSet:
+    for featVec in dataSet:
         currentLabel = featVec[-1]
         if currentLabel not in labelCounts.keys():
-            labelsCounts[currentLabel] = 0
-        labelsCounts[currentLabel] += 1
+            labelCounts[currentLabel] = 0
+        labelCounts[currentLabel] += 1
     shannonEnt = 0.0
     for key in labelCounts:
         prob = float(labelCounts[key])/numEntries
@@ -31,4 +31,5 @@ def createDataSet():
 
 if __name__ == '__main__':
     myDat,labels=createDataSet()
-    print(myDat)
+    # print(myDat)
+    print(calcShannonEnt(myDat))
