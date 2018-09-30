@@ -2,8 +2,8 @@
 @Author       : sean cheng
 @Email        : aya234@163.com
 @CreateTime   : 2018/9/30
-@Program      : python基础练习题，EAN-13的校验码计算，这个校验码计算也有使用与ISBN的
-                校验码计算
+@Program      : python基础练习题，EAN-13的校验码计算，这个校验码计算也可以在
+                ISBN-13的校验码计算
 '''
 
 strNum = '978704048861'
