@@ -10,5 +10,6 @@ def GCD(a,b):
         return a
     a, b = b, a%b
     return GCD(a,b)
+    
 if __name__ in '__main__':
     print(GCD(2009,1394))
