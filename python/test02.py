@@ -9,13 +9,17 @@ import random
 randNum = []
 
 for _ in range(500):
+    # 生成500个随机数
     randNum.append(str(random.randint(0,101)))
 
-with open('random.txt','w',encoding='utf-8') as txt:
+with open('random.txt','w+',encoding='utf-8') as txt:
     txt.write('\n'.join(randNum))
+    txt.seek(0)  # 指针回到开始位置
+    # 根据题意，是要先写入到文件，再从文件里面读出来，练习指针的操作。
+    readNum=txt.read().split('\n')  # 按照回车符的划分，就可以得到列表
 
 result = {}
-for item in randNum:
+for item in readNum:
     result[item] = result.get(item,0)+1
 
 tmp = 0
