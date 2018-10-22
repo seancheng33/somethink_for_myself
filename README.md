@@ -13,8 +13,13 @@
 * 添加GUI文件夹，增加内容：python的TKinter的GUI练习。
 * Data_Analysis文件夹，用于数据统计练习，基于python的练习
 * 添加文件夹用于存放机器学习算法的练习。
+* 添加了一个《PT软件模拟》的文件夹，用来存放一些使用Cisco Packet Tracer时做的模拟网路拓扑图，基本上会是已经可以通信成功的网络，这个文件夹的东西为备考NCRE三级网络技术时的备考模拟为主
 
 某些脚本，我上传到了一个 [Demo网站](http://www.demodashi.com/) 上面，并且设置了打赏的功能
+
+以下列举自己在上面那个网址里面的例子链接
+* [Pygame制作答题类游戏的实现](http://www.demodashi.com/demo/13495.html)
+* [简易推荐引擎的python实现](http://www.demodashi.com/demo/12913.html)
 
 内容在不断的添加中，同时有些可以形成项目的，也在被搬离这个项目。<br>
 部分的代码使用到了phantomjs，需另外下载，貌似github上不能上传exe文件<br>
