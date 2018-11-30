@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UNICODE" ?>
+<topo version="1.2.00.320">
+    <devices>
+        <dev id="87F1C6C3-5315-4c82-A0D4-7B42482DEBCB" name="CLIENT3" model="Server" settings="-domain 0 -eth 54-89-98-90-74-E0 -ipaddr 192.168.1.11 -ipmask 255.255.255.0 -gateway 0.0.0.0 -ipv6addr 2000::2 -ipv6gateway 2000::1 -prefixlen 64 -ipv4dns 0.0.0.0 -ipv6dns 3000::1 -dnslist _www.a.com_192.168.1.10" system_mac="54-89-98-90-74-E0" com_port="0" bootmode="0" cx="620.000000" cy="144.000000" edit_left="647" edit_top="198">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="Ethernet" count="1" />
+            </slot>
+        </dev>
+        <dev id="9AABACBD-F4CD-4077-8F67-36A2E0E001DD" name="CLIENT1" model="Server" settings="-domain 0 -eth 54-89-98-A0-1D-1B -ipaddr 192.168.1.10 -ipmask 255.255.255.0 -gateway 0.0.0.0 -ipv6addr 2000::2 -ipv6gateway 2000::1 -prefixlen 64 -ipv4dns 192.168.1.11 -ipv6dns 3000::1 -dnslist NULL" system_mac="54-89-98-A0-1D-1B" com_port="0" bootmode="0" cx="474.000000" cy="258.000000" edit_left="501" edit_top="312">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="Ethernet" count="1" />
+            </slot>
+        </dev>
+        <dev id="C471A3BD-B0BB-4add-9B61-433BE994E942" name="LSW1" model="S5700" settings="" system_mac="4C-1F-CC-15-5E-F3" com_port="2000" bootmode="0" cx="473.000000" cy="108.000000" edit_left="500" edit_top="162">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="24" />
+            </slot>
+        </dev>
+        <dev id="CD207B8D-C5AB-4652-B567-66B011CBE38A" name="CLIENT2" model="PC" settings=" -simpc_ip 192.168.1.5  -simpc_mask 255.255.255.0  -simpc_gateway 0.0.0.0  -simpc_mac 54-89-98-1C-22-A5  -simpc_mc_dstip 0.0.0.0  -simpc_mc_dstmac 00-00-00-00-00-00  -simpc_dns1 192.168.1.11  -simpc_dns2 0.0.0.0  -simpc_ipv6 ::  -simpc_prefix 128  -simpc_gatewayv6 ::  -simpc_dhcp_state 0  -simpc_dhcpv6_state 0  -simpc_dns_auto_state 0 " system_mac="54-89-98-1C-22-A5" com_port="0" bootmode="0" cx="278.000000" cy="202.000000" edit_left="305" edit_top="256">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="Ethernet" count="1" />
+            </slot>
+        </dev>
+    </devices>
+    <lines>
+        <line srcDeviceID="CD207B8D-C5AB-4652-B567-66B011CBE38A" destDeviceID="C471A3BD-B0BB-4add-9B61-433BE994E942">
+            <interfacePair lineName="Copper" srcIndex="0" srcBoundRectIsMoved="0" srcBoundRect_X="343.899963" srcBoundRect_Y="210.248215" srcOffset_X="0.000000" srcOffset_Y="0.000000" tarIndex="0" tarBoundRectIsMoved="0" tarBoundRect_X="461.100037" tarBoundRect_Y="153.751785" tarOffset_X="0.000000" tarOffset_Y="0.000000" />
+        </line>
+        <line srcDeviceID="9AABACBD-F4CD-4077-8F67-36A2E0E001DD" destDeviceID="C471A3BD-B0BB-4add-9B61-433BE994E942">
+            <interfacePair lineName="Copper" srcIndex="0" srcBoundRectIsMoved="0" srcBoundRect_X="500.712128" srcBoundRect_Y="241.817200" srcOffset_X="0.000000" srcOffset_Y="0.000000" tarIndex="1" tarBoundRectIsMoved="0" tarBoundRect_X="500.287872" tarBoundRect_Y="178.182800" tarOffset_X="0.000000" tarOffset_Y="0.000000" />
+        </line>
+        <line srcDeviceID="87F1C6C3-5315-4c82-A0D4-7B42482DEBCB" destDeviceID="C471A3BD-B0BB-4add-9B61-433BE994E942">
+            <interfacePair lineName="Copper" srcIndex="0" srcBoundRectIsMoved="0" srcBoundRect_X="605.055725" srcBoundRect_Y="160.727936" srcOffset_X="0.000000" srcOffset_Y="0.000000" tarIndex="2" tarBoundRectIsMoved="0" tarBoundRect_X="541.944275" tarBoundRect_Y="145.272064" tarOffset_X="0.000000" tarOffset_Y="0.000000" />
+        </line>
+    </lines>
+    <shapes />
+    <txttips />
+</topo>
