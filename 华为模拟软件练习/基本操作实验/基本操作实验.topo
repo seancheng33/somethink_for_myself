@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UNICODE" ?>
+<topo version="1.2.00.510">
+    <devices>
+        <dev id="4ACD765C-D2EA-4cd7-A745-6F13B0912661" name="AR1" poe="0" model="AR2220" settings="" system_mac="00-E0-FC-20-3D-2C" com_port="2000" bootmode="0" cx="197.000000" cy="227.000000" edit_left="224" edit_top="281">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="1" />
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+            </slot>
+        </dev>
+        <dev id="8FE83606-1DD8-4cda-8E85-398C4FD4EF66" name="PC1" poe="0" model="PC" settings=" -simpc_hostname pc-1  -simpc_ip 192.168.0.1  -simpc_mask 255.255.255.0  -simpc_gateway 0.0.0.0  -simpc_mac 54-89-98-EE-35-CF  -simpc_mc_dstip 0.0.0.0  -simpc_mc_dstmac 00-00-00-00-00-00  -simpc_dns1 0.0.0.0  -simpc_dns2 0.0.0.0  -simpc_ipv6 ::  -simpc_prefix 128  -simpc_gatewayv6 ::  -simpc_dhcp_state 0  -simpc_dhcpv6_state 0  -simpc_dns_auto_state 0  -simpc_igmp_version 1  -simpc_group_ip_start 0.0.0.0  -simpc_src_ip_start 0.0.0.0  -simpc_group_num 0  -simpc_group_step 0  -simpc_src_num 0  -simpc_src_step 0  -simpc_type MODE_IS_INCLUDE " system_mac="54-89-98-EE-35-CF" com_port="0" bootmode="0" cx="425.000000" cy="234.000000" edit_left="452" edit_top="288">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="Ethernet" count="1" />
+            </slot>
+        </dev>
+    </devices>
+    <lines>
+        <line srcDeviceID="4ACD765C-D2EA-4cd7-A745-6F13B0912661" destDeviceID="8FE83606-1DD8-4cda-8E85-398C4FD4EF66">
+            <interfacePair lineName="Copper" srcIndex="0" srcBoundRectIsMoved="0" srcBoundRect_X="267.163422" srcBoundRect_Y="255.325195" srcOffset_X="0.000000" srcOffset_Y="0.000000" tarIndex="0" tarBoundRectIsMoved="0" tarBoundRect_X="408.836578" tarBoundRect_Y="259.674805" tarOffset_X="0.000000" tarOffset_Y="0.000000" />
+        </line>
+    </lines>
+    <shapes />
+    <txttips />
+</topo>
