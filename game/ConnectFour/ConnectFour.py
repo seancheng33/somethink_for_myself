@@ -54,13 +54,14 @@ def makeMove(board, player, column):
 
 def drawBoard(board, extraToken=None):
     DISPLAYSURF.fill(BGCOLOR)
+
     spaceRect = pygame.Rect(0, 0, SPACESIZE, SPACESIZE)
     for x in range(BOARDWIDTH):
         for y in range(BOARDHEIGHT):
             spaceRect.topleft = (XMARGIN + (x * SPACESIZE), YMARGIN + (y * SPACESIZE))
             if board[x][y] == RED:
                 DISPLAYSURF.blit(REDTOKENIMG, spaceRect)
-            elif board[x][y] == RED:
+            elif board[x][y] == BLACK:
                 DISPLAYSURF.blit(BLACKTOKENIMG, spaceRect)
 
     if extraToken != None:
@@ -73,6 +74,7 @@ def drawBoard(board, extraToken=None):
         for y in range(BOARDHEIGHT):
             spaceRect.topleft = (XMARGIN + (x * SPACESIZE), YMARGIN + (y * SPACESIZE))
             DISPLAYSURF.blit(BOARDIMG, spaceRect)
+
     DISPLAYSURF.blit(REDTOKENIMG, REDPILERECT)
     DISPLAYSURF.blit(BLACKTOKENIMG, BLACKPILERECT)
 
@@ -125,7 +127,7 @@ def getHumanMove(board, isFirstMove):
                     column = int((tokenx - XMARGIN) / SPACESIZE)
                     if isValidMove(board, column):
                         animateDroppingToken(board, column, RED)
-                        board[column][getLowerstEmptySpace(board, column)]
+                        board[column][getLowerstEmptySpace(board, column)] = RED
                         drawBoard(board)
                         pygame.display.update()
                         return
