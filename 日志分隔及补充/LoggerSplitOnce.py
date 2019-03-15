@@ -5,19 +5,10 @@ import re,csv,os,sys,time,shutil
 def split_data(data,writer,writer2):
     for line in data:
         split1 = line.split('\t')
-        # ['2017-10-31 23:59:20','User.Info','10.245.128.242',
-        # 'Oct 31 23:56:00 RT_FLOW: RT_FLOW_SESSION_CLOSE: session closed unset: 10.245.242.251/51193->10.251.139.241/53 junos-dns-udp 10.245.242.251/51193->10.251.139.241/53 None None 17 SGS-DDI-13 Trust InterBusiness 80240055 1(72) 1(125) 59 UNKNOWN UNKNOWN N/A(N/A) reth0.1\n']
         split2 = split1[3].replace('  ',' ').split(' ')
-        # ['Oct', '31', '23:56:00',
-        # 'RT_FLOW: RT_FLOW_SESSION_CLOSE: session closed unset: 10.245.242.251/51193->10.251.139.241/53 junos-dns-udp 10.245.242.251/51193->10.251.139.241/53 None None 17 SGS-DDI-13 Trust InterBusiness 80240055 1(72) 1(125) 59 UNKNOWN UNKNOWN N/A(N/A) reth0.1\n']
         split3 = ' '.join(split2[5:])
-        # ['RT_FLOW: RT_FLOW_SESSION_CLOSE: session closed unset: 10.245.242.251',
-        # '51193-', '10.251.139.241', '53 junos-dns-udp 10.245.242.251', '51193-', '10.251.139.241',
-        # '53 None None 17 SGS-DDI-13 Trust InterBusiness 80240055 1(72) 1(125) 59 UNKNOWN UNKNOWN N', 'A(N', 'A) reth0.1\n']
         split4 = re.split('[\>]+', split3)
-        # ['RT_FLOW:', 'RT_FLOW_SESSION_CLOSE:', 'session', 'closed', 'unset:', '10.245.242.251']
         split5 = split4[0].split(' ')
-        # ['53', 'junos-dns-udp', '10.245.242.251']
 
         data1 = split1[0]
         data2 = split1[1]
@@ -52,11 +43,9 @@ def split_data(data,writer,writer2):
             else:
                 data11 = split6[1]
                 split9 = re.split('[/\-]+', split6[2])
-                # ['10.245.242.251', '51193', '']
                 data12 = split9[0]
                 data13 = split9[1]
                 split10 = split4[-1].split(' ')
-                # ['10.251.139.241/53', 'None', 'None', '17', 'SGS-DDI-13', 'Trust', 'InterBusiness', '80240055', '1(72)', '1(125)', '59', 'UNKNOWN', 'UNKNOWN', 'N/A(N/A)', 'reth0.1']
                 split11 = split10[0].split('/')
                 data14 = split11[0]
                 data15 = split11[1]
