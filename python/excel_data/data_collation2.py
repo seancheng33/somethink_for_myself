@@ -58,7 +58,7 @@ with open('tmp.txt', 'r', encoding='utf-8') as outfile:
 #         else:
 #             print(i,dict_data[i]['name'],change_dict[item],dict_data[i][change_dict[item]])
 
-filename = '全市基站用电量统计.xlsx'
+filename = '*.xlsx'
 workbook = xlsxwriter.Workbook(filename)
 worksheet = workbook.add_worksheet('龙湖')
 title_list = ['基站编号','基站名称',
