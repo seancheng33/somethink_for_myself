@@ -11,9 +11,14 @@ then
  break
 fi
 
+if [$[num%2] =1]
+then
+
+fi
+
 if [ $num -lt $guessNum ]
 then
-    echo "你输入的数字比要才的数字小"
+    echo "你输入的数字比要猜的数字小"
 elif [ $num -gt $guessNum ]
 then
     echo "你输入的数字比要猜的数字大"
@@ -21,8 +26,10 @@ elif [ $num -eq $guessNum ]
 then
     echo "恭喜你猜中了"
     break
+elif [$num -gt 60]
+then
+   echo "输入有误，请重新输入"
 else
     echo "输入有误，请重新输入"
 fi
 done
-  
