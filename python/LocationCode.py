@@ -24,8 +24,8 @@ for city in citys:
         locations = city.find("ul")
         # 遍历出市下面的区、县的内容
         for location in locations:
-            t1 = location.find("h5")
-            t2 = location.find("ul")
+            t1 = location.find("h5")	# 获取到省下面的城市名
+            t2 = location.find("ul")	# 获取城市下面的区、县信息。
             # 存在一些标签里面是没有内容的，需要跳出这些内容的循环，否则下面的执行会报错。
             if t1 == -1 or t2 == -1:
                 continue
